@@ -6,7 +6,7 @@ import qs from "query-string";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 const Lihat_produk = () => {
-    git
+
     const { query } = useRouter();
     const [jumlah, setJumlah] = useState(0);
     const [isAdd, setIsAdd] = useState(false);
