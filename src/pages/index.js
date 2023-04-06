@@ -17,6 +17,7 @@ import ListItem_list from "@/Componen/ListItem/ListItem_list";
 import ListItem_slide from "@/Componen/ListItem/ListItem_slide";
 import Loading_mobile from "@/Utils/Loading_mobile";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 const Home = () => {
   const route = useRouter();
@@ -75,8 +76,8 @@ const Home = () => {
         <div className="col-lg-12">
           <Swiper navigation={true} modules={[Navigation]} className="mySwiperx">
             {slideShow.map((list, index) => (
-              <SwiperSlide>
-                <img style={{ borderRadius: "10px", width: "100%" }} src={baseUrl("images/slide_show?w=1200&s=" + list['id_slide_show'])} />
+              <SwiperSlide key={index}>
+                <Image style={{ borderRadius: "10px", width: "100%" }} src={baseUrl("images/slide_show?w=1200&s=" + list['id_slide_show'])} />
               </SwiperSlide>
             ))}
 
@@ -121,7 +122,7 @@ const Home = () => {
               >
                 {
                   list.produk.map((list_produk, index) => (
-                    <SwiperSlide id="link"
+                    <SwiperSlide key={index + 4} id="link"
                       onClick={() => {
                         route.push("/produk/" + list_produk["id_produk"], {
                           "pathname": "/produk",
