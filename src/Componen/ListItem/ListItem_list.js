@@ -13,7 +13,7 @@ const ListItem_list = ({ list }) => {
                             //  navigasi("/produk/" + data["id_produk"] + "/" + urlEncode(data["nama_produk"]) + ".html");
                         }}>
                             <td>
-                                <Image style={{ borderRadius: "5px" }} src={baseUrl("images/produk?w=50&s=" + data["foto"])} />
+                                <img style={{ borderRadius: "5px" }} src={baseUrl("images/produk?w=50&s=" + data["foto"])} />
                             </td>
                             <td width={"10px"}>
 
