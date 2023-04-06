@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 const Lihat_produk = () => {
 
-    const { query } = useRouter();
+
     const [jumlah, setJumlah] = useState(0);
     const [isAdd, setIsAdd] = useState(false);
     const [reload, setReload] = useState(0);
@@ -18,10 +18,7 @@ const Lihat_produk = () => {
 
 
     useEffect(() => {
-
-
         _getData();
-        console.log(query);
     }, [reload]);
 
 
@@ -31,15 +28,16 @@ const Lihat_produk = () => {
     const [produkLainnya, setProdukLainnya] = useState([]);
     const _getData = () => {
         setLoading(true);
-        axios.post(baseUrl("public/lihat_produk"), qs.stringify({
-            "id_produk": id
-        })).then((respon) => {
-            setData(respon.data);
-            setFotoProduk(respon.data.foto_produk);
-            setProdukLainnya(respon.data.produk_lainnya);
-            document.title = data["nama_produk"];
-            setLoading(false);
-        })
+        axios.post(baseUrl("public/lihat_produk"),
+            qs.stringify({
+                "id_produk": id
+            })).then((respon) => {
+                setData(respon.data);
+                setFotoProduk(respon.data.foto_produk);
+                setProdukLainnya(respon.data.produk_lainnya);
+
+                setLoading(false);
+            })
     }
 
     const _lihatProduk = (id_produk) => {

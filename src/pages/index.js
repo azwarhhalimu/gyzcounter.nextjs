@@ -87,7 +87,7 @@ const Home = () => {
         </div>
         <div className="col-lg-3">
           {homeBuilderSidebar.map((list, index) => (
-            <div style={{ border: "1px dashed #F33E38", borderRadius: "4px", padding: "10px", marginBottom: "15px" }}>
+            <div key={index + 5000} style={{ border: "1px dashed #F33E38", borderRadius: "4px", padding: "10px", marginBottom: "15px" }}>
               <div style={{ fontSize: "15px" }}>{list.title} <span className="badge badge-success pull-right">{list.tipe}</span></div>
               <div style={{ fontSize: "12px", opacity: "0.5" }}>{list.sub_title}</div>
               <hr />
@@ -104,9 +104,11 @@ const Home = () => {
         </div>
         <div className="col-lg-6">
           {homeBuilder.map((list, index) => (
-            <div style={{
-              marginBottom: "20px"
-            }}>
+            <div
+              key={index}
+              style={{
+                marginBottom: "20px"
+              }}>
               <div style={{ fontWeight: "bold" }}>{list.title}</div>
               <div style={{ opacity: "0.6" }}>{list.sub_title}</div>
               <Swiper
@@ -163,7 +165,9 @@ const Home = () => {
                 <div style={{ fontSize: "12px" }}>Anda harus login terlebih dahulu untuk melihat data keranjang belanja</div>
                 <Height height={10} />
                 <Link href="/login.html">Login</Link>
-              </center> : <CartKomponen list={cart} total={total} />}
+              </center> : <>
+                {/* {<CartKomponen list={cart} total={total} />} */}
+              </>}
             </div>
           </div>
           <Height height={20} />
@@ -172,7 +176,7 @@ const Home = () => {
             <ul class="list-group" style={{ borderRadius: "0px" }}>
 
               {kategori.map((list, index) => (
-                <li style={{ padding: "5px 10px 5px 10px" }} class="list-group-item d-flex justify-content-between align-items-center">
+                <li key={index + 100} style={{ padding: "5px 10px 5px 10px" }} class="list-group-item d-flex justify-content-between align-items-center">
                   <Link href={"/" + list["id_kategori"] + "/kategori/" + Url_encoded((list["nama_kategori"]).toLowerCase()) + ".html"} style={{ fontSize: "15px", color: "#333" }}>
                     {list.nama_kategori}
                   </Link>
