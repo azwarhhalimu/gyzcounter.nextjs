@@ -10,6 +10,7 @@ import { encryptAES } from "@/Utils/enkripsi";
 import Loading_save from "@/Utils/Loading_save";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import Head from "next/head";
 const Tambah_slide_show = () => {
 
     const route = useRouter();
@@ -66,6 +67,9 @@ const Tambah_slide_show = () => {
 
     }
     return <>
+        <Head>
+            <title>Tambah Slide Show</title>
+        </Head>
         <div className="container-fluid" id="container-wrapper">
             <div className="d-sm-flex align-items-center justify-content-between mb-4">
                 <button className="btn btn-danger" onClick={() => {

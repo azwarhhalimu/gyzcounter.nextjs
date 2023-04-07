@@ -9,6 +9,7 @@ import Height from "@/Utils/Height";
 import Loading_save from "@/Utils/Loading_save";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Head from "next/head";
 const Slide_show = () => {
     const route = useRouter();
 
@@ -64,6 +65,9 @@ const Slide_show = () => {
         }
     }
     return <>
+        <Head>
+            <title>Slide Show</title>
+        </Head>
         <div className="container-fluid" id="container-wrapper">
             <div className="d-sm-flex align-items-center justify-content-between mb-4">
                 <h1 className="h3 mb-0 text-gray-800">Slide Show</h1>
