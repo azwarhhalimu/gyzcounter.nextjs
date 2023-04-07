@@ -100,7 +100,7 @@ const Slide_show = () => {
                         </thead>
                         <tbody>
                             {data.map((list, index) => (
-                                <tr>
+                                <tr key={index + 4232}>
                                     <td>{index + 1}</td>
                                     <td
                                     ><img src={baseUrl("images/slide_show?w=100&s=" + list["id_slide_show"])} />

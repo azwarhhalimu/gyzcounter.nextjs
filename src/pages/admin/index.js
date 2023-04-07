@@ -132,7 +132,7 @@ const Dashboard = () => {
                                     </thead>
                                     <tbody>
                                         {listTransaksi.map((list, index) => (
-                                            <tr>
+                                            <tr key={index + 302}>
                                                 <td><a href="#">{list["id_transaksi"]}</a></td>
                                                 <td>{list["nama"]}</td>
                                                 <td>Rp. {list["total"]}</td>

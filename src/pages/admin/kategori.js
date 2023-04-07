@@ -154,6 +154,7 @@ const Kategori = () => {
                                     {data.map((list, index) =>
                                         edit == list["id_kategori"] ? (
                                             <Edit_kategori
+                                                key={index + 492}
                                                 loading={loading}
                                                 nama_kategori={list["nama_kategori"]}
                                                 id_kategori={list["id_kategori"]}
@@ -161,7 +162,7 @@ const Kategori = () => {
                                                 _update_nama_kategori={_update_nama_kategori}
                                             />
                                         ) : (
-                                            !isLoading && <tr>
+                                            !isLoading && <tr key={index + 9382}>
                                                 <td>{index + 1}</td>
                                                 <td>{list["id_kategori"]}</td>
                                                 <td>{list["nama_kategori"]}</td>

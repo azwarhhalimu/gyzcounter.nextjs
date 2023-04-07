@@ -126,13 +126,14 @@ const Satuan = () => {
                                     {data.map((list, index) =>
                                         edit == list["id_satuan"] ? (
                                             <Edit_satuan
+                                                key={list + 23}
                                                 _batal={_batal}
                                                 _reset={_reset}
                                                 id_satuan={list["id_satuan"]}
                                                 nama_satuan={list["nama_satuan"]}
                                             />
                                         ) : (
-                                            !isLoading && <tr>
+                                            !isLoading && <tr key={index + 4392}>
                                                 <td>{index + 1}</td>
                                                 <td>{list["id_satuan"]}</td>
                                                 <td>{list["nama_satuan"]}</td>
