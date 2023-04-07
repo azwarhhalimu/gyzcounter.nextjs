@@ -145,7 +145,7 @@ const Main_header = ({ _updateMenuCart, menu }) => {
         </div>
       </header>
 
-      <div style={{ height: "10px" }}></div>
+
     </>
   );
 };

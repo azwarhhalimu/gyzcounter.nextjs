@@ -1,3 +1,4 @@
+"use client";
 import { baseUrl } from "@/Utils/Config";
 import Height from "@/Utils/Height";
 import axios from "axios";
@@ -12,8 +13,12 @@ import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, FreeMode, Pagination } from "swiper";
 import Link from "next/link";
-const Lihat_produk = () => {
-    const { query } = useRouter()
+
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+function Lihat_produk() {
 
 
     const [jumlah, setJumlah] = useState(0);
@@ -22,24 +27,35 @@ const Lihat_produk = () => {
     const [swiper, setSwiper] = useState(null);
     const [sp, setSp] = useState(null);
 
+
     const [loading, setLoading] = useState(false);
+    const [id, setId] = useState();
 
-
-    useEffect(() => {
-
-        _getData();
-    }, [reload]);
-
-
-    const [id, setId] = useState(query.slug[0]);
     const [data, setData] = useState({});
     const [fotoProduk, setFotoProduk] = useState([]);
     const [produkLainnya, setProdukLainnya] = useState([]);
-    const _getData = () => {
+
+
+
+    const router = useRouter()
+    const slug = router.query.slug || [];
+    useEffect(() => {
+        const host = window.location.href;
+        const baseUrl = host.split('/');
+        const getId = baseUrl[baseUrl.length - 2];
+        _getData(getId);
+
+
+    }, [id]);
+
+
+
+
+    const _getData = (uri_id) => {
         setLoading(true);
         axios.post(baseUrl("public/lihat_produk"),
             qs.stringify({
-                "id_produk": id
+                "id_produk": uri_id
             })).then((respon) => {
                 setData(respon.data);
                 setFotoProduk(respon.data.foto_produk);
@@ -136,11 +152,15 @@ const Lihat_produk = () => {
     }
 
     return <>
+        <head>
+            <title>{data["nama_produk"]}</title>
+        </head>
         <div className="section" id="about">
             <div className="container">
                 <div className="row">
                     <div className="col-lg-6 col-md-6 col-xs-12">
                         <div className="left-text-content">
+                            { }
 
                             <div className="section-heading">
 
@@ -273,8 +293,8 @@ const Lihat_produk = () => {
                     {
                         produkLainnya.map((list, index) => (
                             <SwiperSlide style={{ width: isMobile ? "30%" : "150px" }} id="link" key={index + 120}>
-                                <Link href="/" onClick={() => {
-                                    _lihatProduk(list.id_produk);
+                                <Link href={"/produk/" + list["id_produk"] + "/" + urlEncode(list["nama_produk"]) + ".html"} onClick={() => {
+                                    setId(list["id_produk"])
                                 }} style={{ color: "#333", textDecoration: "none", textDecorationColor: "#000" }} to={"/produk/" + list["id_produk"] + "/" + urlEncode(list["nama_produk"]) + ".html?f=read_product"}>
                                     <div>
                                         <img style={{ borderRadius: "5px" }} src={baseUrl("images/produk?w=240&s=" + list["foto"])} />
