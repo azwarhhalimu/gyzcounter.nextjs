@@ -1,5 +1,5 @@
 import CryptoJS, { enc } from "crypto-js";
-import { key } from "./Config";
+import { key } from "@/Utils/Config";
 
 const CryptoJSAesJson = {
     stringify: function (cipherParams) {

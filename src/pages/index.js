@@ -84,7 +84,7 @@ const Home = () => {
             <Swiper navigation={true} modules={[Navigation]} className="mySwiperx">
               {slideShow.map((list, index) => (
                 <SwiperSlide key={index}>
-                  <img width={1200} height={500} style={{ borderRadius: "10px", width: "100%" }} src={baseUrl("images/slide_show?w=1200&s=" + list['id_slide_show'])} />
+                  <img style={{ borderRadius: "10px", width: "100%" }} src={baseUrl("images/slide_show?w=1200&s=" + list['id_slide_show'])} />
                 </SwiperSlide>
               ))}
 

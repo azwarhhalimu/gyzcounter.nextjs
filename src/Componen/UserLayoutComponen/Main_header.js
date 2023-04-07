@@ -68,7 +68,7 @@ const Main_header = ({ _updateMenuCart, menu }) => {
                     </Link>
                   </li>
                   <li className="scroll-to-section">
-                    <Link href={"/" + path_admin + ""}>Administrator {menu}</Link>
+                    <Link href={"/admin"}>Administrator {menu}</Link>
                   </li>
                   {/* 
                       <li class="submenu">
