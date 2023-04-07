@@ -5,6 +5,7 @@ import { baseUrl } from "@/Utils/Config";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Loading from "@/Utils/Loading";
+import Head from "next/head";
 
 const Dashboard = () => {
     const route = useRouter();
@@ -37,6 +38,9 @@ const Dashboard = () => {
     }
     return (<>
         {loading && <Loading />}
+        <Head>
+            <title>Dashbaord Admin</title>
+        </Head>
         <div className="container-fluid" id="container-wrapper">
             <div className="d-sm-flex align-items-center justify-content-between mb-4">
                 <h1 className="h3 mb-0 text-gray-800">Dashboard</h1>

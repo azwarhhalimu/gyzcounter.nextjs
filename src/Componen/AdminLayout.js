@@ -17,7 +17,7 @@ const Admin_layout = ({ children }) => {
         if (c == null) {
             alert("Anda harus login dahulu");
             sessionStorage.setItem('url_redirection', getUrl);
-            route.push("/login - admin.html");
+            route.push("/login-admin.html");
         }
 
     }

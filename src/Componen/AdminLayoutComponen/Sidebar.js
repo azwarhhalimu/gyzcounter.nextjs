@@ -130,7 +130,7 @@ const Sidebar = (props) => {
           }
         >
           <Link
-            href={"/admin/pelanggan.html"}
+            href={"/admin/pelanggan"}
             className="nav-link"
 
           >
