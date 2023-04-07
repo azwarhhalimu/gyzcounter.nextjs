@@ -4,11 +4,13 @@ import axios from "axios";
 import { baseUrl } from "@/Utils/Config";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import Loading from "@/Utils/Loading";
 
 const Dashboard = () => {
     const route = useRouter();
     const [data, setData] = useState({});
     const [listTransaksi, setListTransaksi] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         _getData();
@@ -16,6 +18,7 @@ const Dashboard = () => {
 
 
     const _getData = () => {
+        setLoading(true);
         new Autentifkasi().createHeaderAdmin().then(bearer => {
             axios.post(baseUrl("admin/get_dashboard"),
                 {},
@@ -26,12 +29,14 @@ const Dashboard = () => {
                 }
             )
                 .then(respon => {
+                    setLoading(false);
                     setData(respon.data);
                     setListTransaksi(respon.data.data);
                 })
         })
     }
     return (<>
+        {loading && <Loading />}
         <div className="container-fluid" id="container-wrapper">
             <div className="d-sm-flex align-items-center justify-content-between mb-4">
                 <h1 className="h3 mb-0 text-gray-800">Dashboard</h1>
