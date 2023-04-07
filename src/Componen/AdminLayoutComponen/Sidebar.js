@@ -1,10 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { app_name } from "@/Utils/Config";
 const Sidebar = (props) => {
-  useState(() => {
-    console.log("realod");
-  });
+
+  const url = window.location.pathname;
+
+  const [uri, setUri] = useState("");
+  useEffect(() => {
+    console.log(url);
+    setUri(url);
+  }, [url]);
 
   return (
     <>
@@ -24,14 +29,16 @@ const Sidebar = (props) => {
             <img src="/img/logo/logo2.png" />
           </div>
           <div className="sidebar-brand-text mx-3">{app_name}</div>
+
         </Link>
+
         <li
           className={
-            "nav-item" + " " + (props.menu == "dashboard" && " active " + " ")
+            "nav-item" + " " + (uri == ("/admin") && " active " + " ")
           }
         >
           <Link
-            href={"/admin/dashboard"}
+            href={"/admin/"}
             className="nav-link"
 
           >
@@ -47,7 +54,7 @@ const Sidebar = (props) => {
 
         <li
           className={
-            "nav-item" + " " + (props.menu == "produk" && " active " + " ")
+            "nav-item" + " " + (uri.includes("/produk") && " active " + " ")
           }
         >
           <Link
@@ -61,7 +68,7 @@ const Sidebar = (props) => {
         </li>
         <li
           className={
-            "nav-item" + " " + (props.menu == "kategori" && " active " + " ")
+            "nav-item" + " " + (uri.includes("/kategori") && " active " + " ")
           }
         >
           <Link
@@ -75,7 +82,7 @@ const Sidebar = (props) => {
         </li>
         <li
           className={
-            "nav-item" + " " + (props.menu == "satuan" && " active " + " ")
+            "nav-item" + " " + (uri.includes("/satuan") && " active " + " ")
           }
         >
           <Link
@@ -89,7 +96,7 @@ const Sidebar = (props) => {
         </li>
         <li
           className={
-            "nav-item" + " " + (props.menu == "slide_show" && " active " + " ")
+            "nav-item" + " " + (uri.includes("/slide-show") && " active " + " ")
           }
         >
           <Link
@@ -105,7 +112,7 @@ const Sidebar = (props) => {
         <div className="sidebar-heading">Pembeli</div>
         <li
           className={
-            "nav-item" + " " + (props.menu == "home_builder" && " active " + " ")
+            "nav-item" + " " + (uri.includes("/home-builder") && " active " + " ")
           }
         >
           <Link
@@ -119,7 +126,7 @@ const Sidebar = (props) => {
         </li>
         <li
           className={
-            "nav-item" + " " + (props.menu == "pelanggan" && " active " + " ")
+            "nav-item" + " " + (uri.includes("/pelanggan") && " active " + " ")
           }
         >
           <Link
@@ -134,7 +141,7 @@ const Sidebar = (props) => {
 
         <li
           className={
-            "nav-item" + " " + (props.menu == "transaksi" && " active " + " ")
+            "nav-item" + " " + (uri.includes("/transaksi") && " active " + " ")
           }
         >
           <Link
@@ -149,7 +156,7 @@ const Sidebar = (props) => {
         <hr className="sidebar-divider" />
         <li
           className={
-            "nav-item" + " " + (props.menu == "pengaturan" && " active " + " ")
+            "nav-item" + " " + (uri.includes("/pengaturan") && " active " + " ")
           }
         >
           <Link
@@ -162,7 +169,9 @@ const Sidebar = (props) => {
           </Link>
         </li>
       </ul>
-      <div className="version" id="version-ruangadmin" />
+      <div className="version" id="version-ruangadmin" >
+
+      </div>
 
     </>
   );

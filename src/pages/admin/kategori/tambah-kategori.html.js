@@ -1,19 +1,17 @@
 import axios from "axios";
-import { useNavigate, useOutletContext } from "react-router-dom";
-
-import { baseUrl, path_admin, token } from "../../../Config";
+import { baseUrl, path_admin } from "@/Utils/Config";
 import qs from "query-string";
 import { useState } from "react";
-import Autentifkasi from "../../../Autentifikasi";
-import Loading_save from "../../../Komponen/Loading_save";
+import Autentifkasi from "@/Utils/Autentifikasi";
+import Loading_save from "@/Utils/Loading_save";
+import { useRouter } from "next/router";
 
 const Tambah_kategori = () => {
-  const [setMenu] = useOutletContext();
+  const route = useRouter();
   const [nama_kategori, setNama_kategori] = useState();
   const [isLoading, setIsLoading] = useState(false);
 
-  setMenu("kategori");
-  const navigasi = useNavigate();
+
   const _submit = (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -34,7 +32,7 @@ const Tambah_kategori = () => {
       ).then((respon) => {
         if (respon.data.status == "kategori_saved") {
           alert("Data kategori berhasil di simpan")
-          navigasi("/" + path_admin + "/kategori");
+          route.push("/admin/kategori");
         }
         else {
           alert("Data kategori gagal disimpan");
@@ -49,7 +47,7 @@ const Tambah_kategori = () => {
         <div className="d-sm-flex align-items-center justify-content-between mb-4">
           <button
             onClick={() => {
-              navigasi(-1);
+              route.back();
             }} className="btn btn-danger">
             <i className="fa fa-chevron-left" />
             Kembali</button>
@@ -100,7 +98,7 @@ const Tambah_kategori = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div >
     </>
   );
 };

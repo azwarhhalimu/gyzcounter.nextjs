@@ -10,9 +10,7 @@ const UserLayout = ({ children }) => {
 
 
             {!isMobile && <Main_header _updateMenuCart={updateMenuCart} menu={menu} />}
-
             {children}
-
             {!isMobile && <Footer />}
 
 

@@ -152,9 +152,7 @@ function Lihat_produk() {
     }
 
     return <>
-        <head>
-            <title>{data["nama_produk"]}</title>
-        </head>
+
         <div className="section" id="about">
             <div className="container">
                 <div className="row">

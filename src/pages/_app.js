@@ -13,13 +13,8 @@ export default function App({ Component, pageProps }) {
   useEffect(() => {
 
     const path = typeof window !== "undefined" && window.location.pathname;
-    if (path.split("/")[1] != cpath[1]) {
-      console.log("update");
-      setCpath(path.split("/"));
-    }
-    else {
-      console.log("tidak update");
-    }
+
+    setCpath(path.split("/"));
 
 
   }, [pathx]);
@@ -40,7 +35,7 @@ export default function App({ Component, pageProps }) {
       return <Admin_layout>
         <Component {...pageProps} />
       </Admin_layout>
-    case "":
+    default:
       return <UserLayout>
         <Component {...pageProps} />
       </UserLayout>

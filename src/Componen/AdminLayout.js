@@ -1,12 +1,29 @@
-import { useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import Sidebar from "./AdminLayoutComponen/Sidebar";
 import Link from "next/link";
 import Nav_top from "./AdminLayoutComponen/Nav_top";
 import Footer from "./AdminLayoutComponen/Footer";
+import { useRouter } from "next/router";
 
 const Admin_layout = ({ children }) => {
     const [menu, setMenu] = useState("");
     const [colMenu, setColMenu] = useState(false);
+
+    const route = useRouter();
+    const getUrl2 = window.location.pathname;
+    const _cek = () => {
+        const getUrl = window.location.pathname;
+        const c = sessionStorage.getItem("data_login_admin");
+        if (c == null) {
+            alert("Anda harus login dahulu");
+            sessionStorage.setItem('url_redirection', getUrl);
+            route.push("/login - admin.html");
+        }
+
+    }
+    useEffect(() => {
+        _cek();
+    }, [getUrl2])
     return (<>
         <div style={{ fontSize: "16px" }}>
             <div id="page-top sidebar-toggled">

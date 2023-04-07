@@ -36,7 +36,17 @@ const Login_admin = () => {
 
                     window.alert("Login berhasil");
 
-                    route.push("/" + "admin");
+                    const cekRedirection = sessionStorage.getItem("url_redirection");
+
+                    if (cekRedirection != null) {
+                        route.push(cekRedirection);
+                        sessionStorage.removeItem('url_redirection');
+                    }
+                    else {
+                        route.push("/" + "admin");
+                    }
+
+
                 }
                 else {
                     window.alert("Username atau password tidak benar");
