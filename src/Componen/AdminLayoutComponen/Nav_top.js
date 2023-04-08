@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Autentifkasi from "@/Utils/Autentifikasi";
-
+import Img from "@/styles/AdminAssetCss/img/boy.png";
+import Image from "next/image";
 const Nav_top = ({ setColMenu, colMenu }) => {
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
@@ -41,7 +42,7 @@ const Nav_top = ({ setColMenu, colMenu }) => {
         <div className="topbar-divider d-none d-sm-block" />
         <li className="nav-item dropdown no-arrow">
           <a className="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img className="img-profile rounded-circle" src="/img/boy.png" style={{ maxWidth: 60 }} />
+            <Image width={60} height={60} className="img-profile rounded-circle" src={Img} style={{ maxWidth: 60 }} />
             <span className="ml-2 d-none d-lg-inline text-white small">{name}</span>
           </a>
         </li>

@@ -25,9 +25,7 @@ const Sidebar = (props) => {
           className="sidebar-brand d-flex align-items-center justify-content-center"
           href="/"
         >
-          <div className="sidebar-brand-icon">
-            <img src="/img/logo/logo2.png" />
-          </div>
+
           <div className="sidebar-brand-text mx-3">{app_name}</div>
 
         </Link>
