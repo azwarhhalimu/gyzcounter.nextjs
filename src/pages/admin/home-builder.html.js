@@ -18,6 +18,7 @@ import Item_slide from "@/Widget/Item_slide";
 import Autentifkasi from "@/Utils/Autentifikasi";
 import Loading_save from "@/Utils/Loading_save";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 
 
@@ -114,6 +115,9 @@ const Home_builder = () => {
         }
     }
     return <>
+        <Head>
+            <title>Home Builder</title>
+        </Head>
         <div className="container-fluid" id="container-wrapper">
             <div className="d-sm-flex align-items-center justify-content-between mb-4">
                 <h1 className="h3 mb-0 text-gray-800">Home builder</h1>

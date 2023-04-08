@@ -79,7 +79,7 @@ const Kategori = () => {
     };
     const _update_nama_kategori = (value) => {
         setNama_kategori(value);
-        console.log(value);
+        // console.log(value);
 
     };
     const _submit = (e) => {

@@ -25,7 +25,7 @@ const Add_produk = () => {
         const path = window.location.pathname.split("/")[3];
         setId(path);
         _getProduk(path);
-        console.log(path);
+        // console.log(path);
 
     }, [reload]);
     const _getProduk = (id) => {

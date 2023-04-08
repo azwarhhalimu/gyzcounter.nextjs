@@ -95,7 +95,7 @@ function Lihat_produk() {
                 "id_produk": id,
                 "jumlah": jumlah,
             };
-            console.log(id_user);
+            // console.log(id_user);
 
             axios.post(baseUrl("user/add_cart"),
                 qs.stringify({

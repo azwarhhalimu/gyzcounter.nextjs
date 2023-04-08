@@ -47,7 +47,7 @@ class Autentifkasi {
         await this.getTime().then((value) => {
             hasil = value;
         });
-        console.log(hasil);
+        // console.log(hasil);
         //    /const bearer = loginData["id_user"] + "." + loginData["token"] + "." + hasil;
         // /return "Bearer fdf" + encryptAES(bearer);
         dataLogin = (dencryptAES(dataLogin));

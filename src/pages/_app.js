@@ -9,6 +9,7 @@ import "@/styles/AdminAssetCss/all_css.css";
 import NextNProgress from 'nextjs-progressbar';
 export default function App({ Component, pageProps }) {
 
+
   const [cpath, setCpath] = useState([]);
   const pathx = typeof window !== "undefined" && window.location.pathname;
   useEffect(() => {
@@ -23,6 +24,12 @@ export default function App({ Component, pageProps }) {
 
   switch (cpath[1]) {
     case "login.html":
+
+      return <EmptyLayout>
+        <NextNProgress color='#7B1AFF' height={5} />
+        <Component {...pageProps} />
+      </EmptyLayout>
+    case "daftar.html":
 
       return <EmptyLayout>
         <NextNProgress color='#7B1AFF' height={5} />

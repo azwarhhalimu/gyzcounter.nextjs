@@ -7,7 +7,6 @@ const Sidebar = (props) => {
 
   const [uri, setUri] = useState("");
   useEffect(() => {
-    console.log(url);
     setUri(url);
   }, [url]);
 
