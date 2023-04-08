@@ -72,7 +72,7 @@ const Home = () => {
     });
   }
   return (<>
-    <Height height={100} />
+    <Height height={120} />
     {loading && <Loading_mobile />}
     <Head>
       <title>Beranda</title>

@@ -47,7 +47,7 @@ const Main_header = ({ _updateMenuCart, menu }) => {
           borderBottom: "1px solid #dfdfdf",
           width: "100%",
           position: "fixed",
-          zIndex: "999999",
+          zIndex: "10",
         }}
       >
         <div className="container">

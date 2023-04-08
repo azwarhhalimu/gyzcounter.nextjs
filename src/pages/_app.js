@@ -25,24 +25,24 @@ export default function App({ Component, pageProps }) {
     case "login.html":
 
       return <EmptyLayout>
-        <NextNProgress />
+        <NextNProgress color='#7B1AFF' height={5} />
         <Component {...pageProps} />
       </EmptyLayout>
 
     case "login-admin.html":
       return <EmptyLayout>
-        <NextNProgress />
+        <NextNProgress color='#7B1AFF' height={5} />
         <Component {...pageProps} />
       </EmptyLayout>
     case "admin":
       return <Admin_layout>
-        <NextNProgress color='#F60000' height={5} />
+        <NextNProgress color='#F518FF' height={5} />
         <Component {...pageProps} />
       </Admin_layout>
     default:
       return <UserLayout>
 
-        <NextNProgress />
+        <NextNProgress color='#7B1AFF' height={5} />
 
 
         <Component {...pageProps} />
