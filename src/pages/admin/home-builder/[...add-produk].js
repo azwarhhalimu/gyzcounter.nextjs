@@ -124,7 +124,7 @@ const Add_produk = () => {
                             <table className="table">
 
                                 {data.map((list, index) => (
-                                    <tr>
+                                    <tr key={index + "ca"}>
                                         <td>
                                             <img src={baseUrl("images/produk?w=50&s=" + list["foto"])} />
                                         </td><td>{list["nama_produk"]}</td>
@@ -157,7 +157,7 @@ const Add_produk = () => {
                             <table className="table">
 
                                 {dataAdd.map((list, index) => (
-                                    <tr>
+                                    <tr key={index + "abc"}>
                                         <td>
                                             <img src={baseUrl("images/produk?w=50&s=" + list["foto"])} />
                                         </td><td>{list["nama_produk"]}</td>

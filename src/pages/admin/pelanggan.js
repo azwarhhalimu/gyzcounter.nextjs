@@ -97,7 +97,7 @@ export default function Pelanggan() {
                                     <td>{list["alamat"]}</td>
                                     <td style={{ textAlign: "right" }}>
                                         <button onClick={() => {
-                                            navigasi("/" + path_admin + "/" + list["id_user"] + "/transaksi/" + urlEncode(list["nama"]) + ".html", {
+                                            route.push("/admin/" + list["id_user"] + "/transaksi/" + urlEncode(list["nama"]) + ".html", {
                                                 state: {
                                                     "nama": list["nama"]
                                                 }

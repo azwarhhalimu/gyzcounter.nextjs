@@ -21,7 +21,7 @@ const Item_slide = ({ list, hapus, getHapus }) => {
             className="mySwiper"
         >
             {list.map((list, index) => (
-                <SwiperSlide style={{ width: "100%", background: "#DFDFDF" }}>
+                <SwiperSlide key={index + "kdf"} style={{ width: "100%", background: "#DFDFDF" }}>
                     <div><img style={{ width: "100%" }} src={baseUrl("images/produk?s=" + list["foto"] + "&w=350")} /></div>
                     <div style={{ padding: "10px" }}>
                         <div style={{ fontWeight: "bold" }}>{list["nama_produk"]}</div>

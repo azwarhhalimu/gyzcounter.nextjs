@@ -134,7 +134,7 @@ const Home_builder = () => {
                     <Height height={20} />
 
                     {home_builder_sidebar.map((list, index) => (
-                        <div style={{ border: "1px dashed blue", marginTop: "10px", padding: "5px" }}>
+                        <div key={index + "dcs"} style={{ border: "1px dashed blue", marginTop: "10px", padding: "5px" }}>
                             {list["tipe"] != "BANNER" &&
                                 <button passHref onClick={() => {
                                     route.push({
@@ -177,7 +177,7 @@ const Home_builder = () => {
                         <hr />
                         {data.map((list, index) => (
 
-                            <div style={{ border: "1px solid #DFDFDF", marginBottom: "10px", padding: "10px" }}>
+                            <div key={index + "jfklaj"} style={{ border: "1px solid #DFDFDF", marginBottom: "10px", padding: "10px" }}>
                                 <div className="pull-right">
                                     {hapus == list['id_home_builder'] ? <Loading_save text={"Menghapus"} /> : <button
                                         onClick={() => {
@@ -217,7 +217,7 @@ const Home_builder = () => {
                                                 border: "1px solid #DFDFDF",
                                                 width: "190px",
 
-                                            }}>
+                                            }} key={i + "dfso"}>
                                                 <div style={{ width: "100%", background: "#DFDFDF" }}>
                                                     <img style={{ width: "100%" }} src={baseUrl("images/produk?s=" + produk["foto"]) + "&w=200"} />
                                                 </div>

@@ -5,7 +5,7 @@ const Item_list = ({ list, hapus }) => {
         <table>
             {list.map((list_data, index) => (
                 <>
-                    <tr>
+                    <tr key={index + "df"}>
                         <td valign="top">
                             <img style={{ borderRadius: "5px" }} src={baseUrl("images/produk?s=" + list_data["foto"] + "&w=40")} />
                         </td>
