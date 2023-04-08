@@ -1,10 +1,7 @@
-"use client";
+
 import { baseUrl } from "@/Utils/Config";
-import Height from "@/Utils/Height";
 import axios from "axios";
-import Head from "next/head";
 import qs from "query-string";
-import Router from "next/router";
 import CurrencyFormat from "react-currency-format";
 import { useRouter } from "next/router";
 import { urlEncode } from "@/Utils/Config";
@@ -37,8 +34,8 @@ function Lihat_produk() {
 
 
 
-    const router = useRouter()
-    const triger = window.location.pathname;
+    const route = useRouter();
+    const triger = typeof window !== "undefined" && window.location.pathname;
     useEffect(() => {
         const host = window.location.href;
         const baseUrl = host.split('/');
@@ -83,7 +80,7 @@ function Lihat_produk() {
         var s = new SessionManager();
         if (s.getUser() == null) {
             window.alert("Oppss.\nAnda harus login dulu");
-            navigasi("/login.html");
+            route.push("/login.html");
         }
         var auth = new Autentifkasi();
 
@@ -124,7 +121,7 @@ function Lihat_produk() {
         var s = new SessionManager();
         if (s.getUser() == null) {
             window.alert("Oppss.\nAnda harus login dulu");
-            //   navigasi("/login.html");
+            route.push("/login.html");
         }
         new Autentifkasi().createHeader().then((bearer) => {
             const data = {
@@ -145,7 +142,7 @@ function Lihat_produk() {
                     if (respon.data.status == "cart_added") {
                         setUpdateMenuCart(random);
                         window.alert("Data berahasil ditambahkan");
-                        //     navigasi("/shopping-cart.html")
+                        route.push("/shopping-cart.html")
                     }
                 });
         })
@@ -163,7 +160,7 @@ function Lihat_produk() {
                             <div className="section-heading">
 
                                 {!isMobile && <button className="btn" onClick={() => {
-                                    router.push("/");
+                                    route.push("/");
                                 }}><i className="fa fa-chevron-left" /> Kembali</button>}
                                 <h2>{data["nama_produk"]}</h2>
                                 <div style={{ fontWeight: "bold", color: "#1783FF" }}>Harga Rp. <CurrencyFormat thousandSeparator={true}

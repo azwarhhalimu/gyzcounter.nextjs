@@ -113,6 +113,7 @@ const Edit_produk = (props) => {
                         <option value={""}>Kategori</option>
                         {kategori.map((list, index) => (
                             <option
+                                key={index + "443"}
                                 {...(pKategori == list["id_kategori"] && " selected ")}
                                 value={list["id_kategori"]}
                             >
@@ -132,6 +133,7 @@ const Edit_produk = (props) => {
                         <option value={""}>Satuan</option>
                         {satuan.map((list, index) => (
                             <option
+                                key={index + "fad"}
                                 {...(pSatuan == list["id_satuan"] && " selected ")}
                                 value={list["id_satuan"]}
                             >

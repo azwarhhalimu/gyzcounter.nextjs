@@ -150,6 +150,7 @@ const Produk = () => {
                                 {data.map((list, index) =>
                                     edit == list["id_produk"] ? (
                                         <Edit_produk
+                                            key={index}
                                             id_produk={list["id_produk"]}
                                             _callBack={_callBack}
                                             nama_produk={list["nama_produk"]}
@@ -182,7 +183,7 @@ const Produk = () => {
                                                 <td style={{ textAlign: "right" }} colSpan={5}>
 
                                                     {list["foto"].map((foto, i) => (
-                                                        <span style={{ margin: "3px" }}>
+                                                        <span key={i + "3234"} style={{ margin: "3px" }}>
                                                             <img style={{ borderRadius: "3px", border: "2px solid #0722D3" }} src={baseUrl("images/produk?w=50&s=" + foto["id_foto_produk"])} />
                                                         </span>
                                                     ))}

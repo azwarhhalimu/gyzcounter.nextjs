@@ -108,7 +108,7 @@ export default function Lihat_transaksi() {
                         </thead>
                         <tbody>
                             {subTransaksi.map((list, index) => (
-                                <tr>
+                                <tr key={index + "df"}>
                                     <td>{index + 1}</td>
                                     <td>{list["nama_produk"]}</td>
                                     <td>Rp. {list["harga"]}</td>

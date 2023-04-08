@@ -319,7 +319,7 @@ const Upload_foto = () => {
                                     </thead>
                                     <tbody>
                                         {data.map((list, index) => (
-                                            !isLoading && <tr>
+                                            !isLoading && <tr key={index + "fksdjfl"}>
                                                 <td>
                                                     {list["feature_default"] == "1" ? (
                                                         <button

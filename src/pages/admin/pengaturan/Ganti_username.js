@@ -8,7 +8,7 @@ import { dencryptAES } from "@/Utils/enkripsi";
 import Head from "next/head";
 
 export default function Ganti_username() {
-    document.title = "Pengaturan | Ganti Username"
+
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const _updateUsername = async (e) => {

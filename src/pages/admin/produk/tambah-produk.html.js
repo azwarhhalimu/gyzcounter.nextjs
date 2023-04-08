@@ -150,7 +150,7 @@ const Tambah_produk = () => {
                                     >
                                         <option value={""}>Pilih Kategori</option>
                                         {kategori.map((list, index) => (
-                                            <option value={list["id_kategori"]}>
+                                            <option key={index} value={list["id_kategori"]}>
                                                 {list["nama_kategori"]}
                                             </option>
                                         ))}
@@ -211,7 +211,7 @@ const Tambah_produk = () => {
                                             >
                                                 <option value={""}>Pilih Satuan</option>
                                                 {satuan.map((list, index) => (
-                                                    <option value={list["id_satuan"]}>
+                                                    <option key={index + "sef"} value={list["id_satuan"]}>
                                                         {list["nama_satuan"]}
                                                     </option>
                                                 ))}
