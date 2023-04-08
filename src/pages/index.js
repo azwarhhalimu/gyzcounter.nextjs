@@ -135,7 +135,7 @@ const Home = () => {
                         onClick={() => {
                           route.push("/produk/" + list_produk["id_produk"] + "/" + urlEncode(list_produk["nama_produk"]) + ".html")
                         }}
-                        style={{ width: "25%" }}>
+                        style={{ width: "25%", cursor: "pointer" }}>
                         <div>
                           <img width={250} alt={"info"} style={{ width: "100%", borderRadius: "10px" }} src={baseUrl("images/produk?s=" + list_produk["foto"] + "&w=250")} />
                         </div>

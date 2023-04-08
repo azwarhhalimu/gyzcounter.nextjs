@@ -9,6 +9,7 @@ import Loading_save from "@/Utils/Loading_save";
 import { useRouter } from "next/router";
 import Edit_produk from "./produk/Edit_produk";
 import Head from "next/head";
+import Link from "next/link";
 
 const Produk = () => {
 
@@ -18,9 +19,13 @@ const Produk = () => {
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [hapus, setHapus] = useState("");
+
+    const [kategori, setKategori] = useState([]);
     useEffect(() => {
 
+        _getKategori();
         _getProduk();
+
     }, [reload]);
 
     const _batal = () => {
@@ -60,6 +65,11 @@ const Produk = () => {
 
         }
     };
+    const _getKategori = () => {
+        axios.post(baseUrl("public/kategori")).then(respon => {
+            setKategori(respon.data.data);
+        });
+    }
     const _getProduk = () => {
         setIsLoading(true);
         new Autentifkasi().createHeaderAdmin().then((bearer) => {
@@ -101,15 +111,29 @@ const Produk = () => {
                 </div>
                 <div className="card" style={{ background: "#DFDFDF00" }}>
                     <div className="card-header">
-                        <button
-                            onClick={() => {
-                                route.push("/admin/produk/tambah-produk.html");
-                            }}
-                            className="btn btn-outline btn-danger float-right"
-                        >
-                            Tambah
-                        </button>
+
                         <h3>Data Produk</h3>
+                        <div>
+                            <button
+                                onClick={() => {
+                                    route.push("/admin/produk/tambah-produk.html");
+                                }}
+                                className="btn btn-outline btn-danger float-right"
+                            >
+                                Tambah
+                            </button>
+                        </div>
+                        <ul className="nav nav-pills">
+                            <li key={"4adfa"} className="nav-item">
+                                <a style={{ fontSize: "15px" }} className="nav-link " aria-current="page" href="#">SEMUA</a>
+                            </li>
+                            {kategori.map((list, index) => (
+                                <li key={index + "4adfa"} className="nav-item">
+                                    <button style={{ fontSize: "15px" }} className="nav-link btn " aria-current="page" href="#">{list["nama_kategori"]}</button>
+                                </li>
+                            ))}
+                        </ul>
+
                     </div>
                     <div className="card-body">
                         <table className="table">

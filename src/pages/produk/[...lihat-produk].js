@@ -38,7 +38,7 @@ function Lihat_produk() {
 
 
     const router = useRouter()
-    const slug = router.query.slug || [];
+    const triger = window.location.pathname;
     useEffect(() => {
         const host = window.location.href;
         const baseUrl = host.split('/');
@@ -46,7 +46,7 @@ function Lihat_produk() {
         _getData(getId);
 
 
-    }, [id]);
+    }, [triger]);
 
 
 
@@ -162,8 +162,8 @@ function Lihat_produk() {
 
                             <div className="section-heading">
 
-                                {!isMobile && <button className="btn btn-link" onClick={() => {
-                                    Router.back();
+                                {!isMobile && <button className="btn" onClick={() => {
+                                    router.push("/");
                                 }}><i className="fa fa-chevron-left" /> Kembali</button>}
                                 <h2>{data["nama_produk"]}</h2>
                                 <div style={{ fontWeight: "bold", color: "#1783FF" }}>Harga Rp. <CurrencyFormat thousandSeparator={true}
