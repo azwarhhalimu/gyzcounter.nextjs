@@ -6,6 +6,7 @@ import EmptyLayout from '@/Componen/EmptyLayout';
 import Admin_layout from '@/Componen/AdminLayout';
 
 import "@/styles/AdminAssetCss/all_css.css";
+import NextNProgress from 'nextjs-progressbar';
 export default function App({ Component, pageProps }) {
 
   const [cpath, setCpath] = useState([]);
@@ -24,19 +25,26 @@ export default function App({ Component, pageProps }) {
     case "login.html":
 
       return <EmptyLayout>
+        <NextNProgress />
         <Component {...pageProps} />
       </EmptyLayout>
 
     case "login-admin.html":
       return <EmptyLayout>
+        <NextNProgress />
         <Component {...pageProps} />
       </EmptyLayout>
     case "admin":
       return <Admin_layout>
+        <NextNProgress color='#F60000' height={5} />
         <Component {...pageProps} />
       </Admin_layout>
     default:
       return <UserLayout>
+
+        <NextNProgress />
+
+
         <Component {...pageProps} />
       </UserLayout>
 
