@@ -17,6 +17,8 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import AppBar from "@/Widget/Mobile_komponen/AppBar";
+import Head from "next/head";
 function Lihat_produk() {
 
 
@@ -152,6 +154,14 @@ function Lihat_produk() {
 
     return <>
 
+        <Head>
+            <meta property="og:title" content={data["nama_produk"]} />
+            <meta property="og:description" content={data["deskripsi"]} />
+            <meta property="og:image" itemprop="image" content={baseUrl("images/produk?w=400&s=" + data.foto)} />
+            <meta property="og:type" content="article" />
+            <meta property="og:locale" content="en_GB" />
+        </Head>
+        {isMobile && <AppBar title={""} leadingButton={true} />}
         <div className="section" id="about">
             <div className="container">
                 <div className="row">
