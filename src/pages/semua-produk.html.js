@@ -7,6 +7,8 @@ import Loading_mobile from "@/Utils/Loading_mobile";
 import { Url_encoded } from "@/Utils/Url_encoded";
 
 import Link from "next/link";
+import AppBar from "@/Widget/Mobile_komponen/AppBar";
+import Nav_bottom from "@/Widget/Mobile_komponen/Nav_bottom";
 const Semua_produk = () => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -25,6 +27,7 @@ const Semua_produk = () => {
 
         {loading && <Loading_mobile />}
         <Height height={isMobile ? 40 : 150} />
+        {isMobile && <AppBar title={"Semua Produk"} />}
         <div className="container">
             <div className="row">
                 <div className="col-lg-12">
@@ -91,6 +94,7 @@ const Semua_produk = () => {
                 </div>
             </div>
         </div >
+        {isMobile && <Nav_bottom selected={1} />}
     </>);
 }
 
