@@ -20,6 +20,7 @@ import Head from "next/head";
 import { useWindowDimensions } from "@/Utils/WindowDimentions";
 import { isMobile } from "react-device-detect";
 import AppBar from "@/Widget/Mobile_komponen/AppBar";
+import Loading_mobile from "@/Utils/Loading_mobile";
 
 const Home = () => {
   const { width, height } = useWindowDimensions();
