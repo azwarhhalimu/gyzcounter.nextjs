@@ -1,16 +1,17 @@
-import { Router, useRouter } from "next/router";
+
+import { dencryptAES } from "./enkripsi";
 
 class SessionManager {
 
     getUser() {
-        const route = useRouter();
+
         if (typeof window !== 'undefined') {
             if (window.sessionStorage.getItem("data_login") == null) {
 
                 return null;
             }
 
-            return JSON.parse(dencr(window.sessionStorage.getItem("data_login")));
+            return JSON.parse(dencryptAES(window.sessionStorage.getItem("data_login")));
         }
     }
 }

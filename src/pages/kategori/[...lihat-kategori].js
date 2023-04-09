@@ -6,6 +6,7 @@ import { Url_encoded } from "@/Utils/Url_encoded";
 import qs from "query-string";
 import { useEffect, useState } from "react";
 import { isMobile } from "react-device-detect";
+import No_data from "@/Widget/No_data";
 
 const Lihat_kategori = () => {
 
@@ -56,7 +57,7 @@ const Lihat_kategori = () => {
                             {kategori.map((list, index) => (
                                 <li key={index + 100} style={{ padding: "5px 10px 5px 10px", margin: "5px" }} class="list-group-item d-flex justify-content-between align-items-center">
                                     <Link href={"/kategori/" + list["id_kategori"] + "/" + urlEncode((list["nama_kategori"]).toLowerCase()) + ".html"} style={{ fontSize: "15px", color: "#333" }}>
-                                        {list.nama_kategori} {list["id_kategori"] == url.split("/")[2] && <span style={{ color: "red" }}>***</span>}
+                                        {list["id_kategori"] == url.split("/")[2] && <span style={{ color: "red" }}>***</span>}  {list.nama_kategori} {list["id_kategori"] == url.split("/")[2] && <span style={{ color: "red" }}>***</span>}
                                     </Link>
                                     <span class="badge badge-primary badge-pill">{list["count"]}</span>
                                 </li>
@@ -93,9 +94,9 @@ const Lihat_kategori = () => {
 
                                 </div>
                             </> : <>
-                                <div className="col-sm-3 " {...(index > 5) && {
+                                <div className="col-sm-3 " {...(index > 3) && {
                                     style: {
-                                        marginTop: "25px"
+                                        marginTop: "20px"
                                     }
                                 }}>
                                     <Link href={"/produk/" + list["id_produk"] + "/" + Url_encoded(list["nama_produk"]) + ".html"} style={{ color: "#333333" }}>
@@ -118,12 +119,15 @@ const Lihat_kategori = () => {
                                         </div>
                                     </Link>
 
-                                </div></>
+                                </div ></>
                         ))}
                     </div>
+                    {data.length == 0 && <No_data
+                        title={"Opps Data Kosong"}
+                        text={"Data pada kategori ini tidak tersedia"} />}
                 </div>
             </div>
-        </div>
+        </div >
     </>);
 }
 

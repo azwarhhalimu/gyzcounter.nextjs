@@ -72,7 +72,7 @@ export default function Transaksi_pengguna() {
                             </thead>
                             <tbody>
                                 {data.map((list, index) => (
-                                    <tr>
+                                    <tr key={index + "al"}>
                                         <td>{index + 1}</td>
                                         <td>{list["nama"]}</td>
                                         <td>{list["alamat"]}</td>
