@@ -21,6 +21,8 @@ import { useWindowDimensions } from "@/Utils/WindowDimentions";
 import { isMobile } from "react-device-detect";
 import AppBar from "@/Widget/Mobile_komponen/AppBar";
 import Loading_mobile from "@/Utils/Loading_mobile";
+import Home_topBar from "@/Widget/Mobile_komponen/Home_topBar";
+import Nav_bottom from "@/Widget/Mobile_komponen/Nav_bottom";
 
 const Home = () => {
   const { width, height } = useWindowDimensions();
@@ -79,7 +81,7 @@ const Home = () => {
     <Head>
       <title>Beranda</title>
     </Head>
-    {isMobile && <AppBar />}
+    {isMobile && <Home_topBar />}
     <div>
 
       <div className="container">
@@ -195,7 +197,7 @@ const Home = () => {
         </div>
       </div >
     </div>
-
+    {isMobile && <Nav_bottom selected={0} />}
   </>);
 }
 
