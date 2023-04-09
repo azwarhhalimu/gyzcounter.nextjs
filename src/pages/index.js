@@ -178,7 +178,7 @@ const Home = () => {
 
                 {kategori.map((list, index) => (
                   <li key={index + 100} style={{ padding: "5px 10px 5px 10px" }} class="list-group-item d-flex justify-content-between align-items-center">
-                    <Link href={"/" + list["id_kategori"] + "/kategori/" + Url_encoded((list["nama_kategori"]).toLowerCase()) + ".html"} style={{ fontSize: "15px", color: "#333" }}>
+                    <Link href={"/kategori/" + list["id_kategori"] + "/" + Url_encoded((list["nama_kategori"]).toLowerCase()) + ".html"} style={{ fontSize: "15px", color: "#333" }}>
                       {list.nama_kategori}
                     </Link>
                     <span class="badge badge-primary badge-pill">{list["count"]}</span>

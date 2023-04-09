@@ -18,6 +18,10 @@ const CryptoJSAesJson = {
 }
 
 const dencryptAES = (data_encrypt) => {
+
+    if (data_encrypt == null) {
+        return "";
+    }
     const encrypted = (CryptoJS.enc.Utf8.stringify(CryptoJS.enc.Base64.parse(data_encrypt)));
     var decrypted = JSON.parse(CryptoJS.AES.decrypt(encrypted, key, { format: CryptoJSAesJson }).toString(CryptoJS.enc.Utf8));
     return decrypted;

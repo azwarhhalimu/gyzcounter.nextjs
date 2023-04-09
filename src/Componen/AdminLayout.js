@@ -1,3 +1,4 @@
+"use client"
 import { useEffect, useReducer, useState } from "react";
 import Sidebar from "./AdminLayoutComponen/Sidebar";
 import Link from "next/link";
@@ -11,13 +12,18 @@ const Admin_layout = ({ children }) => {
 
     const route = useRouter();
     const getUrl2 = window.location.pathname;
-    const _cek = () => {
+    const _cek = async () => {
         const getUrl = window.location.pathname;
         const c = sessionStorage.getItem("data_login_admin");
-        if (c == null) {
-            alert("Anda harus login dahulu");
-            sessionStorage.setItem('url_redirection', getUrl);
+        console.log(c);
+        if (!c) {
+
+            if (getUrl != "/login-admin.html") {
+                await sessionStorage.setItem('url_redirection', getUrl);
+            }
+
             route.push("/login-admin.html");
+            return;
         }
 
     }

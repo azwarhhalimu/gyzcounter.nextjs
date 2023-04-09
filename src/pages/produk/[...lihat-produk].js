@@ -9,6 +9,8 @@ import { isMobile } from "react-device-detect";
 import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, FreeMode, Pagination } from "swiper";
+import { SessionManager } from "@/Utils/SessionManager";
+import Autentifkasi from "@/Utils/Autentifikasi";
 import Link from "next/link";
 
 import "swiper/css";

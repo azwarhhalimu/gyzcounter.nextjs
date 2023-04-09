@@ -21,14 +21,20 @@ class Autentifkasi {
             hasil = value;
         });
 
-        loginData = loginData.getUser();
-        if (loginData["id_user"] == null) {
-            alert("Login dahulu");
+        try {
+            loginData = loginData.getUser();
+            if (loginData["id_user"] == null) {
+                alert("Login dahulu");
+            }
+            else {
+                const bearer = loginData["id_user"] + "." + loginData["token"] + "." + hasil;
+                return "Bearer " + encryptAES(bearer);
+            }
         }
-        else {
-            const bearer = loginData["id_user"] + "." + loginData["token"] + "." + hasil;
-            return "Bearer " + encryptAES(bearer);
+        catch (err) {
+            console.log("terjadi masala");
         }
+
 
     }
     async adminHeader() {

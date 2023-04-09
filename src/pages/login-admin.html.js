@@ -6,15 +6,18 @@ import { useState } from "react";
 import { encryptAES } from "@/Utils/enkripsi";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Loading_save from "@/Utils/Loading_save";
 
 const Login_admin = () => {
     const route = useRouter();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [loading, setLoading] = useState(false);
 
 
     const _login = (e) => {
 
+        setLoading(true);
         const data = { "username": username, "password": password };
         e.preventDefault();
 
@@ -29,15 +32,11 @@ const Login_admin = () => {
                     }
                 }
             ).then((respon) => {
+                setLoading(false);
                 if (respon.data.status == "login_success") {
-
-
                     window.sessionStorage.setItem("data_login_admin", respon.data.data);
-
                     window.alert("Login berhasil");
-
                     const cekRedirection = sessionStorage.getItem("url_redirection");
-
                     if (cekRedirection != null) {
                         route.push(cekRedirection);
                         sessionStorage.removeItem('url_redirection');
@@ -45,7 +44,6 @@ const Login_admin = () => {
                     else {
                         route.push("/" + "admin");
                     }
-
 
                 }
                 else {
@@ -96,7 +94,7 @@ const Login_admin = () => {
                                                 </div>
                                             </div>
                                             <div className="form-group">
-                                                <button type="submit" className="btn btn-primary btn-block">Login</button>
+                                                {loading ? <Loading_save text={"Mencoba login"} /> : <button type="submit" className="btn btn-primary btn-block">Login</button>}
                                             </div>
 
 

@@ -97,11 +97,7 @@ export default function Pelanggan() {
                                     <td>{list["alamat"]}</td>
                                     <td style={{ textAlign: "right" }}>
                                         <button onClick={() => {
-                                            route.push("/admin/" + list["id_user"] + "/transaksi/" + urlEncode(list["nama"]) + ".html", {
-                                                state: {
-                                                    "nama": list["nama"]
-                                                }
-                                            });
+                                            route.push("/admin/pelanggan/" + list["id_user"] + "/" + urlEncode(list["nama"]) + "/transaksi-pengguna.html");
                                         }} className="btn">Transaksi</button>
                                         {ubah == list["id_user"] ? <Loading_save text={"Mengganti status"} /> : <button
                                             onClick={() => {

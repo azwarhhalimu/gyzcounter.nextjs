@@ -1,16 +1,19 @@
 import { baseUrl, urlEncode } from "@/Utils/Config";
 import Image from "next/image";
+import { useRouter } from "next/router";
+import { useState } from "react";
 
 
 const ListItem_list = ({ list }) => {
 
+    const route = useRouter();
     return <>
         <table width={"100%"}>
             <thead>
                 {list.map((data, index) => (
                     <>
-                        <tr id="link" style={{ cursor: "pointer" }} onClick={() => {
-                            //  navigasi("/produk/" + data["id_produk"] + "/" + urlEncode(data["nama_produk"]) + ".html");
+                        <tr id="link" key={index + "323"} style={{ cursor: "pointer" }} onClick={() => {
+                            route.push("/produk/" + data["id_produk"] + "/" + urlEncode(data["nama_produk"]) + ".html");
                         }}>
                             <td>
                                 <img style={{ borderRadius: "5px" }} src={baseUrl("images/produk?w=50&s=" + data["foto"])} />

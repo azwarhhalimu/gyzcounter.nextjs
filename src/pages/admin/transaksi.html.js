@@ -28,7 +28,7 @@ export default function Transaksi() {
     }
     return <>
         <Head>
-            <title>Transaksi</title>
+            <title>Transaksi Pengguna</title>
         </Head>
         <div className="container-fluid" id="container-wrapper">
             <div className="d-sm-flex align-items-center justify-content-between mb-4">
