@@ -15,13 +15,12 @@ import "swiper/css/pagination";
 import { FreeMode, Navigation, Pagination } from "swiper";
 import ListItem_list from "@/Componen/ListItem/ListItem_list";
 import ListItem_slide from "@/Componen/ListItem/ListItem_slide";
-import Loading_mobile from "@/Utils/Loading_mobile";
 import { useRouter } from "next/router";
-import Image from "next/image";
 import Head from "next/head";
+import { useWindowDimensions } from "@/Utils/WindowDimentions";
 
 const Home = () => {
-
+  const { width, height } = useWindowDimensions();
 
   const route = useRouter();
   useEffect(() => {
@@ -72,12 +71,14 @@ const Home = () => {
     });
   }
   return (<>
-    <Height height={120} />
-    {loading && <Loading_mobile />}
+    {/* <Height height={120} /> */}
+    {/* {loading && <Loading_mobile />} */}
     <Head>
       <title>Beranda</title>
     </Head>
+
     <div>
+
       <div className="container">
         <div className="row">
           <div className="col-lg-12">
