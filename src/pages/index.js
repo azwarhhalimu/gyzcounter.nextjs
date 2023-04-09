@@ -18,6 +18,8 @@ import ListItem_slide from "@/Componen/ListItem/ListItem_slide";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import { useWindowDimensions } from "@/Utils/WindowDimentions";
+import { isMobile } from "react-device-detect";
+import AppBar from "@/Widget/Mobile_komponen/AppBar";
 
 const Home = () => {
   const { width, height } = useWindowDimensions();
@@ -76,7 +78,7 @@ const Home = () => {
     <Head>
       <title>Beranda</title>
     </Head>
-
+    {isMobile && <AppBar />}
     <div>
 
       <div className="container">
