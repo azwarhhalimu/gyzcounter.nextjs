@@ -54,7 +54,7 @@ export default function Kategori_user() {
                             <ul class="list-group" style={{ borderRadius: "0px" }}>
 
                                 {kategori.map((list, index) => (
-                                    <li style={{ padding: "5px 10px 5px 10px" }} class="list-group-item d-flex justify-content-between align-items-center">
+                                    <li key={index + 'op'} style={{ padding: "5px 10px 5px 10px" }} class="list-group-item d-flex justify-content-between align-items-center">
                                         <Link
                                             href={"#"}
                                             style={{ fontSize: "15px", color: "#333" }}>
