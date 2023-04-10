@@ -10,7 +10,7 @@ import Loading from "@/Utils/Loading";
 import AppBar from "@/Widget/Mobile_komponen/AppBar";
 import { isMobile } from "react-device-detect";
 import { useRouter } from "next/router";
-export default function Kategori_user() {
+export default function Lihat_kategori_mobile() {
     const id = "";
     const router = useRouter();
     const [kategori, setKategori] = useState([]);
