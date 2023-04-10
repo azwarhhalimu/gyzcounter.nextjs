@@ -4,6 +4,7 @@ import { isMobile } from "react-device-detect";
 import { baseUrl } from "@/Utils/Config";
 import axios from "axios";
 import Loading_mobile from "@/Utils/Loading_mobile";
+
 import { Url_encoded } from "@/Utils/Url_encoded";
 
 import Link from "next/link";
@@ -40,7 +41,7 @@ const Semua_produk = () => {
                     <div className="row">
                         {data.map((list, index) => (
                             isMobile ? <>
-                                <div className="col-sm-2 grid" style={{ marginTop: "25px" }}>
+                                <div className="col-sm-2" id="grid" style={{ marginTop: "25px", width: "50%" }}>
                                     <Link href={"/produk/" + list["id_produk"] + "/" + Url_encoded(list["nama_produk"]) + ".html"} style={{ color: "#333333" }}>
                                         <div className="list-data" style={{
                                             padding: "2px",

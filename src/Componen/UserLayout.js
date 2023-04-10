@@ -2,6 +2,7 @@ import { useState } from "react";
 import { isMobile } from "react-device-detect";
 import Footer from "./UserLayoutComponen/Footer";
 import Main_header from "./UserLayoutComponen/Main_header";
+
 const UserLayout = ({ children }) => {
     const [updateMenuCart, setUpdateMenuCart] = useState(0);
     const [menu, setMenu] = useState("");

@@ -11,6 +11,7 @@ import qs from "query-string";
 import "@/styles/AdminAssetCss/all_css.css";
 import NextNProgress from 'nextjs-progressbar';
 import Head from 'next/head';
+import "@/styles/grid.css";
 
 
 
