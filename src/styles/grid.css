@@ -1,3 +1,11 @@
 #grid{
     width: "48%";
 }
+
+#menu-aktif {
+    color: "blue"
+}
+
+#menu-aktif:hover {
+    color: "red"
+}

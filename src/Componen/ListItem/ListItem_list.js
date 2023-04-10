@@ -12,8 +12,8 @@ const ListItem_list = ({ list }) => {
             <table width={"100%"}>
                 <thead>
                     {list.map((data, index) => (
-                        <>
-                            <tr id="link" key={index + "gsfg"} style={{ cursor: "pointer" }} onClick={() => {
+                        < >
+                            <tr id="link" key={data["id_produk"]} style={{ cursor: "pointer" }} onClick={() => {
                                 route.push("/produk/" + data["id_produk"] + "/" + urlEncode(data["nama_produk"]) + ".html");
                             }}>
                                 <td>

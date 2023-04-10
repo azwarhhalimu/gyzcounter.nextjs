@@ -12,16 +12,19 @@ import { isMobile } from "react-device-detect";
 import { useRouter } from "next/router";
 export default function Lihat_kategori_mobile() {
 
+    const cid = typeof window !== "undefined" && window.location.pathname;
     const router = useRouter();
     const [kategori, setKategori] = useState([]);
     const [namaKategori, setNamaKategori] = useState("");
     const [produk, setProduk] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [id, setId] = useState("");
     useEffect(() => {
         const getId = window.location.pathname.split("/");
         console.log(getId);
+        setId(getId[3])
         _getProduk(getId[3]);
-    }, [])
+    }, [cid])
     useEffect(() => {
 
         _getKategori();
@@ -58,9 +61,10 @@ export default function Lihat_kategori_mobile() {
 
                                 {kategori.map((list, index) => (
                                     <li key={index + "abc"} style={{ padding: "5px 10px 5px 10px" }} class="list-group-item d-flex justify-content-between align-items-center">
-                                        <Link href={""} {...list["id_kategori"] == id && { className: "menu-aktif" }} to={"/" + list["id_kategori"] + "/kategori/" + Url_encoded((list["nama_kategori"]).toLowerCase()) + ".html"}
+                                        <Link href={"/kategori/mobile/" + list["id_kategori"] + "/" + urlEncode(list["nama_kategori"]) + ".html"} {...list["id_kategori"] == id && { id: "menu-aktif" }}
+                                            to={"/" + list["id_kategori"] + "/kategori/" + Url_encoded((list["nama_kategori"]).toLowerCase()) + ".html"}
                                             style={{ fontSize: "15px", color: "#333" }}>
-                                            {list.nama_kategori}
+                                            {list["id_kategori"] == id && <span>***</span>} {list.nama_kategori}
                                         </Link>
                                         <span class="badge badge-primary badge-pill">{list["count"]}</span>
                                     </li>
@@ -93,7 +97,9 @@ export default function Lihat_kategori_mobile() {
                     {isLoading ?
                         <Loading />
                         : <>{produk.length == 0 && <>
-                            <No_data />
+                            <No_data title={"Oppss"}
+                                text={"Data pada kategori " + namaKategori + " masih kosong"}
+                            />
                         </>}</>}
                 </div>
             </div>

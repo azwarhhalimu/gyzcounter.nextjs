@@ -165,14 +165,14 @@ const Home = () => {
           </div>
           <div className="col-lg-3">
             <div>
-              <div style={{ fontWeight: "400", }}>Keranjang Belanja</div>
-              <div style={{ border: "1px dashed #1783FF", padding: "10px" }}>
-                {new SessionManager().getUser() == null ? <center>
+              <div className="c" style={{ fontWeight: "400", }}>Keranjang Belanja</div>
+              <div className="d" style={{ border: "1px dashed #1783FF", padding: "10px" }}>
+                {new SessionManager().getUser() == null ? <div style={{ textAlign: "center" }}>
                   <i className="fa fa-info" />
                   <div style={{ fontSize: "12px" }}>Anda harus login terlebih dahulu untuk melihat data keranjang belanja</div>
                   <Height height={10} />
                   <Link href="/login.html">Login</Link>
-                </center> : <>
+                </div> : <>
                   {/* {<CartKomponen list={cart} total={total} />} */}
                 </>}
               </div>
@@ -180,14 +180,14 @@ const Home = () => {
             <Height height={20} />
             <div>
               <div style={{ fontWeight: "400", }}>Kategori</div>
-              <ul class="list-group" style={{ borderRadius: "0px" }}>
+              <ul className="list-group" style={{ borderRadius: "0px" }}>
 
                 {kategori.map((list, index) => (
-                  <li key={index + 100} style={{ padding: "5px 10px 5px 10px" }} class="list-group-item d-flex justify-content-between align-items-center">
+                  <li key={index + 100} style={{ padding: "5px 10px 5px 10px" }} className="list-group-item d-flex justify-content-between align-items-center">
                     <Link href={"/kategori/" + list["id_kategori"] + "/" + Url_encoded((list["nama_kategori"]).toLowerCase()) + ".html"} style={{ fontSize: "15px", color: "#333" }}>
                       {list.nama_kategori}
                     </Link>
-                    <span class="badge badge-primary badge-pill">{list["count"]}</span>
+                    <span className="badge badge-primary badge-pill">{list["count"]}</span>
                   </li>
                 ))}
 

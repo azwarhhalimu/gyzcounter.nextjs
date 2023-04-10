@@ -1,9 +1,13 @@
+import Autentifkasi from "@/Utils/Autentifikasi";
 import { SessionManager } from "@/Utils/SessionManager";
 import axios from "axios";
 import qs from "query-string";
+import { baseUrl } from "@/Utils/Config";
 import { useEffect, useState } from "react";
+import { encryptAES } from "@/Utils/enkripsi";
 import { path_admin } from "@/Utils/Config";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 const Main_header = ({ _updateMenuCart, menu }) => {
 
   const [data, setData] = useState({});
@@ -99,11 +103,15 @@ const Main_header = ({ _updateMenuCart, menu }) => {
                     </>
                     : <>
                       <li className="scroll-to-section">
-                        <button onClick={() => {
-                          //   navigasi("/shopping-cart.html");
-                        }} className="btn" style={{ border: "1px solid #DFDFDF" }}>
-                          <i className="fa fa-shopping-cart" />
-                        </button>
+                        <>
+                          { }
+                          <Link href={"#"} onClick={() => {
+                            //   navigasi("/shopping-cart.html");
+                          }} className="btn">
+                            USER
+                          </Link>
+                        </>
+
                         <span style={{
                           left: "-5px",
                           top: "-13px",

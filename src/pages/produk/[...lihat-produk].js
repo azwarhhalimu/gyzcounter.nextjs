@@ -85,7 +85,10 @@ function Lihat_produk({ users, cdat }) {
         var s = new SessionManager();
         if (s.getUser() == null) {
             window.alert("Oppss.\nAnda harus login dulu");
+            window.sessionStorage.setItem("url_redirect_user", window.location.pathname);
             route.push("/login.html");
+
+            return;
         }
         var auth = new Autentifkasi();
 
@@ -109,6 +112,7 @@ function Lihat_produk({ users, cdat }) {
                     }
                 }
             ).then((respon) => {
+
                 setUpdateMenuCart(random);
                 if (respon.data.status == "cart_add") {
                     window.alert("Keranjang berhasil di tambahkan");

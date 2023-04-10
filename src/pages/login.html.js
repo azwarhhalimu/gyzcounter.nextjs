@@ -35,6 +35,7 @@ const Login = () => {
 
                 window.sessionStorage.setItem("data_login", (respon.data.data));
                 window.alert("Login berhasil");
+                route.push("/");
 
             }
             else {
