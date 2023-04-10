@@ -55,7 +55,7 @@ export default function Lihat_kategori_mobile() {
                             <ul class="list-group" style={{ borderRadius: "0px" }}>
 
                                 {kategori.map((list, index) => (
-                                    <li style={{ padding: "5px 10px 5px 10px" }} class="list-group-item d-flex justify-content-between align-items-center">
+                                    <li key={index + "abc"} style={{ padding: "5px 10px 5px 10px" }} class="list-group-item d-flex justify-content-between align-items-center">
                                         <Link href={""} {...list["id_kategori"] == id && { className: "menu-aktif" }} to={"/" + list["id_kategori"] + "/kategori/" + Url_encoded((list["nama_kategori"]).toLowerCase()) + ".html"}
                                             style={{ fontSize: "15px", color: "#333" }}>
                                             {list.nama_kategori}
@@ -72,7 +72,7 @@ export default function Lihat_kategori_mobile() {
                     <div style={{ fontWeight: "500" }}>Kategori {namaKategori}</div>
                     <div className="row">
                         {produk.map((list, index) => (
-                            <div  {...isMobile && { style: { width: "50%" } }} {...index > 3 && { style: { marginTop: "20px" } }} className="col-lg-3">
+                            <div key={index + "adf"}  {...isMobile && { style: { width: "50%" } }} {...index > 3 && { style: { marginTop: "20px" } }} className="col-lg-3">
                                 <div onClick={() => {
                                     router.push("/produk/" + list["id_produk"] + "/" + urlEncode(list["nama_produk"]) + ".html")
                                 }} className="list-data" style={{ padding: "1px", border: "1px solid #dfdfdf", borderRadius: "5px" }}>
