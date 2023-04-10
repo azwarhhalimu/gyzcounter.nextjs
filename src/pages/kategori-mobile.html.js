@@ -9,6 +9,7 @@ import Loading from "@/Utils/Loading";
 import Link from "next/link";
 import AppBar from "@/Widget/Mobile_komponen/AppBar";
 import { isMobile } from "react-device-detect";
+import Nav_bottom from "@/Widget/Mobile_komponen/Nav_bottom";
 export default function Kategori_user() {
 
     const [kategori, setKategori] = useState([]);
@@ -93,5 +94,6 @@ export default function Kategori_user() {
                 </div>
             </div>
         </div >
+        <Nav_bottom selected={2} />
     </>
 }
