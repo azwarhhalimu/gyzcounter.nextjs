@@ -72,7 +72,7 @@ export default function Kategori_user() {
                     <div style={{ fontWeight: "500" }}>Kategori {namaKategori}</div>
                     <div className="row">
                         {produk.map((list, index) => (
-                            <div  {...isMobile && { style: { width: "50%" } }} {...index > 3 && { style: { marginTop: "20px" } }} className="col-lg-3">
+                            <div key={index + "dfk"} {...isMobile && { style: { width: "50%" } }} {...index > 3 && { style: { marginTop: "20px" } }} className="col-lg-3">
                                 <div onClick={() => {
                                     navigasi("/produk/" + list["id_produk"] + "/" + urlEncode(list["nama_produk"]) + ".html")
                                 }} className="list-data" style={{ padding: "1px", border: "1px solid #dfdfdf", borderRadius: "5px" }}>
