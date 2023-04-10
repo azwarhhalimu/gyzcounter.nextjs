@@ -19,7 +19,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import AppBar from "@/Widget/Mobile_komponen/AppBar";
 import Head from "next/head";
-function Lihat_produk({ users }) {
+function Lihat_produk({ users, cdat }) {
 
 
     const [jumlah, setJumlah] = useState(0);
@@ -161,6 +161,7 @@ function Lihat_produk({ users }) {
             <title>{users.title}</title>
             <meta property="og:title" content={users.title} />
             <meta property="og:image" itemprop="image" content={baseUrl("images/produk?w=400&s=" + users.foto)}></meta>
+            <meta property="og:description" content={users.subtilte} />
         </Head>
         <div className="section" id="about">
             <div className="container">
@@ -330,24 +331,21 @@ export default Lihat_produk;
 
 
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
     // calling an external API to fetch data
-    const id = typeof window !== "undefined" && window.location.pathname.slice("/");
+
+
+    const cdat = context.query;
 
     let users;
     await axios.post(baseUrl("public/get_meta_lihat_produk"),
         qs.stringify({
-            "id_produk": "9635653790"
+            "id_produk": cdat["lihat-produk"][0],
         })
     )
         .then((respon) => {
             users = respon.data;
         })
-
-
-    console.log(users);
-
-
     // this returning data can be accessed from the component using the prop name
-    return { props: { users } };
+    return { props: { users, cdat } };
 }
