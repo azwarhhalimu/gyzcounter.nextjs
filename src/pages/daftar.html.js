@@ -5,6 +5,7 @@ import axios from "axios";
 import qs from "query-string";
 import { baseUrl } from "@/Utils/Config";
 import { useRouter } from "next/router";
+import Loading_save from "@/Utils/Loading_save";
 
 const Daftar = () => {
 
@@ -15,8 +16,11 @@ const Daftar = () => {
     const [no_handphone, setNo_handphone] = useState();
     const [alamat, setAlamat] = useState();
     const [password, setPassword] = useState();
+    const [loading, setLoading] = useState(false);
 
+    const route = useRouter();
     const _submit = (e) => {
+        setLoading(true);
         e.preventDefault();
         axios.post(baseUrl("auth/daftar"), qs.stringify({
             "nama": nama,
@@ -26,6 +30,7 @@ const Daftar = () => {
             "alamat": alamat,
             "password": password
         })).then((respon) => {
+            setLoading(false);
             if (respon.data.status == "email_already") {
                 window.alert("Email yang anda masukkan sudah di gunakan");
             }
@@ -34,9 +39,7 @@ const Daftar = () => {
             }
             else if (respon.data.status == "user_saved") {
                 window.alert("Daftar Berhasil, Silahkan login kembali");
-                navigasi("/login.html");
-
-
+                route.push("/login.html");
             }
         })
     }
@@ -128,7 +131,10 @@ const Daftar = () => {
                                     <div className="col-lg-12">
                                         <div style={{ height: "10px" }} />
 
-                                        <button type="submit" id="form-submit" className="main-button-icon">Daftar Sekarang</button>
+                                        {loading ? <Loading_save text={"Mendaftar..."} /> :
+                                            <button type="submit"
+                                                id="form-submit"
+                                                className="main-button-icon">Daftar Sekarang</button>}
 
 
                                     </div>
