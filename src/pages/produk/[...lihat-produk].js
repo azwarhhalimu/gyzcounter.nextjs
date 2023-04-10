@@ -19,7 +19,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import AppBar from "@/Widget/Mobile_komponen/AppBar";
 import Head from "next/head";
-function Lihat_produk() {
+function Lihat_produk({ users }) {
 
 
     const [jumlah, setJumlah] = useState(0);
@@ -65,6 +65,7 @@ function Lihat_produk() {
                 setLoading(false);
             })
     }
+
 
     const _lihatProduk = (id_produk) => {
         window.scrollTo(0, 0);
@@ -154,20 +155,18 @@ function Lihat_produk() {
 
     return <>
 
-        <Head>
-            <meta property="og:title" content={data["nama_produk"]} />
-            <meta property="og:description" content={data["deskripsi"]} />
-            <meta property="og:image" itemprop="image" content={baseUrl("images/produk?w=400&s=" + data.foto)} />
-            <meta property="og:type" content="article" />
-            <meta property="og:locale" content="en_GB" />
-        </Head>
+
         {isMobile && <AppBar title={""} leadingButton={true} />}
+        <Head>
+            <title>{users.title}</title>
+            <meta property="og:title" content={users.title} />
+            <meta property="og:image" itemprop="image" content={baseUrl("images/produk?w=400&s=" + users.foto)}></meta>
+        </Head>
         <div className="section" id="about">
             <div className="container">
                 <div className="row">
                     <div className="col-lg-6 col-md-6 col-xs-12">
                         <div className="left-text-content">
-                            { }
 
                             <div className="section-heading">
 
@@ -246,7 +245,7 @@ function Lihat_produk() {
                                             sp.slideTo(index);
                                         }} key={index + 5} style={{ margin: "5px", cursor: "pointer" }}>
                                             <div style={{ borderRadius: "3px", border: swiper == index ? "3px solid blue" : "3px solid #DFDFDF" }}>
-                                                <img src={baseUrl("images/produk?w=100&s=" + list["id_foto_produk"])} alt />
+                                                <img src={baseUrl("images/produk?w=100&s=" + list["id_foto_produk"]).replace("amp;", "")} alt />
                                             </div>
                                         </div>
                                     ))
@@ -328,3 +327,27 @@ function Lihat_produk() {
 }
 
 export default Lihat_produk;
+
+
+
+export async function getServerSideProps() {
+    // calling an external API to fetch data
+    const id = typeof window !== "undefined" && window.location.pathname.slice("/");
+
+    let users;
+    await axios.post(baseUrl("public/get_meta_lihat_produk"),
+        qs.stringify({
+            "id_produk": "9635653790"
+        })
+    )
+        .then((respon) => {
+            users = respon.data;
+        })
+
+
+    console.log(users);
+
+
+    // this returning data can be accessed from the component using the prop name
+    return { props: { users } };
+}

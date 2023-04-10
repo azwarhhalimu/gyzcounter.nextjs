@@ -1,25 +1,39 @@
 import UserLayout from '@/Componen/UserLayout'
 import "../styles/UserAssetCss/all_import.css";
 import "../styles/globals.css";
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import EmptyLayout from '@/Componen/EmptyLayout';
 import Admin_layout from '@/Componen/AdminLayout';
+import { baseUrl } from '@/Utils/Config';
 
+import axios from 'axios';
+import qs from "query-string";
 import "@/styles/AdminAssetCss/all_css.css";
 import NextNProgress from 'nextjs-progressbar';
+import Head from 'next/head';
+
+
+
+
 export default function App({ Component, pageProps }) {
 
 
+
   const [cpath, setCpath] = useState([]);
+  const [loading, setLoading] = useState(false)
+  const [data, setData] = useState({});
+
+
+
   const pathx = typeof window !== "undefined" && window.location.pathname;
   useEffect(() => {
-
     const path = typeof window !== "undefined" && window.location.pathname;
-
     setCpath(path.split("/"));
+    const c = (path.split("/"));
 
 
   }, [pathx]);
+
 
 
   switch (cpath[1]) {
@@ -47,13 +61,11 @@ export default function App({ Component, pageProps }) {
         <Component {...pageProps} />
       </Admin_layout>
     default:
-      return <UserLayout>
+      return <> <UserLayout>
 
         <NextNProgress color='#7B1AFF' height={5} />
 
-
         <Component {...pageProps} />
-      </UserLayout>
-
+      </UserLayout> </>
   }
 }
