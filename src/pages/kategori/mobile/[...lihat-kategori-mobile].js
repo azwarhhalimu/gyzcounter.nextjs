@@ -11,17 +11,19 @@ import AppBar from "@/Widget/Mobile_komponen/AppBar";
 import { isMobile } from "react-device-detect";
 import { useRouter } from "next/router";
 export default function Lihat_kategori_mobile() {
-    const id = "";
+
     const router = useRouter();
     const [kategori, setKategori] = useState([]);
     const [namaKategori, setNamaKategori] = useState("");
     const [produk, setProduk] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     useEffect(() => {
-        _getProduk();
+        const getId = window.location.pathname.split("/");
+        console.log(getId);
+        _getProduk(getId[3]);
     }, [])
     useEffect(() => {
-        _getProduk();
+
         _getKategori();
     }, [])
     const _getKategori = () => {
@@ -30,11 +32,11 @@ export default function Lihat_kategori_mobile() {
                 setKategori(respon.data.data);
             })
     }
-    const _getProduk = () => {
+    const _getProduk = (id) => {
         setIsLoading(true);
         axios.post(baseUrl("public/list_produk_kategori"),
             qs.stringify({
-                "id_kategori": "id"
+                "id_kategori": id
             })
         )
             .then((respon) => {
@@ -44,7 +46,7 @@ export default function Lihat_kategori_mobile() {
             })
     }
     return <>
-        <AppBar title={"lihat kategori"} leadingButton={true} url={"back"} />
+        <AppBar title={namaKategori} leadingButton={true} url={"back"} />
         <Height height={120} />
         <div className="container">
             <div className="row">
@@ -88,9 +90,11 @@ export default function Lihat_kategori_mobile() {
                             </div>
                         ))}
                     </div>
-                    {isLoading ? <Loading /> : <>{produk.length == 0 && <>
-                        <No_data />
-                    </>}</>}
+                    {isLoading ?
+                        <Loading />
+                        : <>{produk.length == 0 && <>
+                            <No_data />
+                        </>}</>}
                 </div>
             </div>
         </div>
