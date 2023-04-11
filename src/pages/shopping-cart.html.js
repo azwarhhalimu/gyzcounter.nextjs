@@ -113,7 +113,7 @@ const Shopping_cart = () => {
                                             </thead>
                                             <tbody>
                                                 {data.map((list, index) => (
-                                                    <tr>
+                                                    <tr key={index + "mi"}>
                                                         <td>
                                                             <img style={{ width: "60px", borderRadius: "5px", border: "2px solid #DFDFDF" }} src={baseUrl("images/produk?w=70&s=" + list["foto"])} />
                                                         </td>
