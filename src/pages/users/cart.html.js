@@ -54,7 +54,7 @@ const Keranjang_belanja_user = () => {
                                 </thead>
                                 <tbody>
                                     {data.map((list, index) => (
-                                        <tr>
+                                        <tr key={index + "jdfa"}>
                                             <td>{index + 1}</td>
                                             <td>{list["nama_produk"]}</td>
                                             <td>{list['jumlah']}</td>

@@ -55,7 +55,7 @@ const Transaksi_user = () => {
                                 </thead>
                                 <tbody>
                                     {data.map((list, index) => (
-                                        <tr>
+                                        <tr key={index + "abc"}>
                                             <td>{index + 1}</td>
                                             <td>{list["id_transaksi"]}</td>
                                             <td>{list["nama"]}</td>
