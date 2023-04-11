@@ -4,14 +4,11 @@ import "../styles/globals.css";
 import React, { useEffect, useState } from 'react';
 import EmptyLayout from '@/Componen/EmptyLayout';
 import Admin_layout from '@/Componen/AdminLayout';
-import { baseUrl } from '@/Utils/Config';
 
-import axios from 'axios';
-import qs from "query-string";
+import "@/styles/grid.css";
 import "@/styles/AdminAssetCss/all_css.css";
 import NextNProgress from 'nextjs-progressbar';
-import Head from 'next/head';
-import "@/styles/grid.css";
+import UsersLayout from '@/Componen/UsersLayout';
 
 
 
@@ -61,6 +58,11 @@ export default function App({ Component, pageProps }) {
         <NextNProgress color='#F518FF' height={5} />
         <Component {...pageProps} />
       </Admin_layout>
+    case "users":
+      return <UsersLayout>
+        <NextNProgress color='#F518FF' height={5} />
+        <Component {...pageProps} />
+      </UsersLayout>
     default:
       return <> <UserLayout>
 

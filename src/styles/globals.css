@@ -2,8 +2,8 @@
   opacity: 0.8;
 }
 #menu-aktif{
-  color:"blue"
+  color:blue
 }
 #menu-aktif:hover{
-  color:"red"
+  color:red
 }

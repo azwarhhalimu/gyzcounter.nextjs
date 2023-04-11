@@ -1,11 +1,21 @@
 #grid{
     width: "48%";
 }
-
-#menu-aktif {
-    color: "blue"
+#admin-menu #aktif_menu{
+    color:red;
+    font-weight: bold;
+    border-bottom: 3px solid red;
 }
 
-#menu-aktif:hover {
-    color: "red"
+#admin{
+    margin-top:"10px"
+}
+#admin-menu>a{
+    padding: 10px;
+    margin: 15px;
+
+}
+#admin-menu>a:hover{
+    font-weight: bold;
+
 }
