@@ -8,8 +8,10 @@ import { encryptAES } from "@/Utils/enkripsi";
 import { path_admin } from "@/Utils/Config";
 import Link from "next/link";
 import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
 const Main_header = ({ _updateMenuCart, menu }) => {
 
+  const route = useRouter();
   const [data, setData] = useState({});
   const [reset, setReset] = useState(0);
   const sessionManager = new SessionManager().getUser();
@@ -40,7 +42,7 @@ const Main_header = ({ _updateMenuCart, menu }) => {
     if (c) {
       sessionStorage.removeItem("data_login");
       alert("Anda telah logout");
-      //navigasi('/login.html');
+      route.push('/login.html');
     }
   }
   return (
@@ -105,11 +107,11 @@ const Main_header = ({ _updateMenuCart, menu }) => {
                       <li className="scroll-to-section">
                         <>
                           { }
-                          <Link href={"#"} onClick={() => {
-                            //   navigasi("/shopping-cart.html");
+                          <button style={{ border: "1px solid #DFDFDF", paddingTop: "-20px" }} onClick={() => {
+                            route.push("/shopping-cart.html");
                           }} className="btn">
-                            USER
-                          </Link>
+                            <i style={{ marginTop: "6px" }} className="fa fa-shopping-cart" />
+                          </button>
                         </>
 
                         <span style={{
@@ -127,7 +129,7 @@ const Main_header = ({ _updateMenuCart, menu }) => {
                       </li>
                       <li style={{ paddingLeft: "0px" }} className="scroll-to-section">
                         <button onClick={() => {
-                          navigasi("/user/transaksi.html");
+                          route.push("/users/transaksi.html");
                         }} className="btn" style={{ border: "1px solid #DFDFDF" }}>
                           <i className="fa fa-user" /> {new SessionManager().getUser()["nama"]}
                         </button>

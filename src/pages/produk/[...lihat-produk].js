@@ -6,8 +6,9 @@ import CurrencyFormat from "react-currency-format";
 import { useRouter } from "next/router";
 import { urlEncode } from "@/Utils/Config";
 import { isMobile } from "react-device-detect";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { encryptAES } from "@/Utils/enkripsi";
 import { Navigation, FreeMode, Pagination } from "swiper";
 import { SessionManager } from "@/Utils/SessionManager";
 import Autentifkasi from "@/Utils/Autentifikasi";
@@ -19,9 +20,11 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import AppBar from "@/Widget/Mobile_komponen/AppBar";
 import Head from "next/head";
+import { CKontext } from "@/Componen/UserLayout";
 function Lihat_produk({ users, cdat }) {
 
 
+    const { updateMenuCart, setUpdateMenuCart } = useContext(CKontext);
     const [jumlah, setJumlah] = useState(0);
     const [isAdd, setIsAdd] = useState(false);
     const [reload, setReload] = useState(0);
@@ -30,7 +33,7 @@ function Lihat_produk({ users, cdat }) {
 
 
     const [loading, setLoading] = useState(false);
-    const [id, setId] = useState();
+    const [id, setId] = useState("");
 
     const [data, setData] = useState({});
     const [fotoProduk, setFotoProduk] = useState([]);
@@ -41,9 +44,11 @@ function Lihat_produk({ users, cdat }) {
     const route = useRouter();
     const triger = typeof window !== "undefined" && window.location.pathname;
     useEffect(() => {
-        const host = window.location.href;
+
+        const host = window.location.pathname;
         const baseUrl = host.split('/');
-        const getId = baseUrl[baseUrl.length - 2];
+        const getId = baseUrl[2];
+        setId(getId);
         _getData(getId);
 
 
@@ -112,9 +117,10 @@ function Lihat_produk({ users, cdat }) {
                     }
                 }
             ).then((respon) => {
+                setUpdateMenuCart(updateMenuCart + 1);
 
-                setUpdateMenuCart(random);
                 if (respon.data.status == "cart_add") {
+
                     window.alert("Keranjang berhasil di tambahkan");
                 }
                 else if (respon.data.status == "cart_update") {
@@ -149,9 +155,10 @@ function Lihat_produk({ users, cdat }) {
             )
                 .then((respon) => {
                     if (respon.data.status == "cart_added") {
-                        setUpdateMenuCart(random);
+
+                        setUpdateMenuCart(updateMenuCart + 1);
                         window.alert("Data berahasil ditambahkan");
-                        route.push("/shopping-cart.html")
+
                     }
                 });
         })
