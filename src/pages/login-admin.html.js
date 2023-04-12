@@ -59,7 +59,10 @@ const Login_admin = () => {
             //   Detect browsers go back action
             if (as !== router.asPath) {
                 window.history.pushState(null, null, router.asPath);
-                window.confirm("Apakah anda ingin kembali");
+                const c = window.confirm("Apakah anda ingin kembali");
+                if (c) {
+                    route.push("/");
+                }
             }
         });
 
