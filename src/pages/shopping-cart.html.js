@@ -14,6 +14,7 @@ import AppBar from '@/Widget/Mobile_komponen/AppBar';
 import Loading_mobile from '@/Utils/Loading_mobile';
 import { useRouter } from 'next/router';
 import { CKontext } from '@/Componen/UserLayout';
+import No_data from '@/Widget/No_data.js';
 const Shopping_cart = () => {
     const route = useRouter();
 
@@ -147,7 +148,14 @@ const Shopping_cart = () => {
                                             </tbody>
                                         </table>
                                     </>}
+                                {data.length == 0 && <div style={{ width: "400px", margin: "auto" }}>
+                                    <No_data title="Ooppzzz..." text={"Keranjang belanja anda masih kosong"} /></div>}
 
+                                <div>
+
+
+
+                                </div>
                                 <hr />
                                 <div style={{ textAlign: "right", fontWeight: "bold" }}>
                                     Total Pembayaran: Rp. {total}
@@ -157,11 +165,11 @@ const Shopping_cart = () => {
                                     <Height height={30} />
 
                                     <button onClick={() => {
-                                        navigasi("/");
+                                        route.push("/");
                                     }} className='btn'><i className='fa fa-arrow-left' /> Kembali Berbelanja</button>
                                     {" "}
                                     <button onClick={() => {
-                                        navigasi("/selesaikan-transaksi.html")
+                                        route.push("/selesaikan-transaksi.html")
                                     }} className='btn btn-primary'>Selesaikan Belanjaan</button>
                                 </div>
                             </div>

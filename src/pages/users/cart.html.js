@@ -1,12 +1,15 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Autentifkasi from "@/Utils/Autentifikasi";
+import No_data from "@/Widget/No_data";
 import { baseUrl } from "@/Utils/Config";
 import { dencryptAES, encryptAES } from "@/Utils/enkripsi";
 import { SessionManager } from "@/Utils/SessionManager";
 import qs from "query-string";
 import Height from "@/Utils/Height";
+import { useRouter } from "next/router";
 const Keranjang_belanja_user = () => {
+    const route = useRouter();
     const [data, setData] = useState([]);
     const [total, setTotal] = useState("");
     useEffect(() => {
@@ -66,12 +69,13 @@ const Keranjang_belanja_user = () => {
                                 </tbody>
 
                             </table>
+                            {data.length == 0 && <No_data title={"Oppszzz...."} text={"Data transaksi masih kosong"} />}
                             <div style={{ textAlign: "right" }}>
                                 Total : {total}
                             </div>
                             <Height height={20} />
                             <button onClick={() => {
-                                navigasi("/selesaikan-transaksi.html");
+                                route.push("/selesaikan-transaksi.html");
                             }} className="btn btn-success">Bayar Sekarang</button>
                         </div>
                     </div>

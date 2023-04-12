@@ -4,6 +4,12 @@ import Link from "next/link";
 const SidebarCart = ({ cart, totoal }) => {
     return (<>
         <div>
+            {cart.length == 0 &&
+                <div style={{ textAlign: "center" }}>
+                    <i className="fa fa-info" />
+                    <div>Data cart masih kosong</div>
+                    <div style={{ fontSize: "10px", opacity: "0.7" }}>Silahkan tambahkan barang belajaan terlebih dahulu</div>
+                </div>}
             <table border={0} width={"100%"} style={{ fontSize: "12px" }}>
                 {cart.map((list, index) => (
                     index < 5 && <>
@@ -39,6 +45,7 @@ const SidebarCart = ({ cart, totoal }) => {
             <div style={{ fontWeight: "bold", fontSize: "13px", textAlign: "right" }}>
                 {cart.length >= 5 && <Link href="/shopping-cart.html">Lihat Lebih Banyak</Link>}
             </div>
+            <hr />
             <div style={{ fontWeight: "bold", fontSize: "13px", textAlign: "right" }}>
                 {"Total Bayar :Rp." + totoal}
             </div>

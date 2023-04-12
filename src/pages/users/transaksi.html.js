@@ -6,6 +6,7 @@ import { SessionManager } from "@/Utils/SessionManager";
 import qs from "query-string";
 import { useEffect, useState } from "react";
 import Height from "@/Utils/Height";
+import No_data from "@/Widget/No_data";
 
 const Transaksi_user = () => {
     const [data, setData] = useState([]);
@@ -70,6 +71,7 @@ const Transaksi_user = () => {
                                 </tbody>
 
                             </table>
+                            {data.length == 0 && <No_data title={"Oppszzz...."} text={"Data transaksi masih kosong"} />}
                         </div>
                     </div>
 

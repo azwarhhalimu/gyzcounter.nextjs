@@ -11,11 +11,13 @@ import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 const Main_header = ({ _updateMenuCart, menu }) => {
 
+  const url = typeof window !== "undefined" && window.location.pathname;
   const route = useRouter();
   const [data, setData] = useState({});
   const [reset, setReset] = useState(0);
   const sessionManager = new SessionManager().getUser();
   useEffect(() => {
+    console.log(url);
     if (sessionManager != null) {
       new Autentifkasi().createHeader().then((bearer) => {
         axios.post(baseUrl("user/get_jumlah_cart"),
@@ -69,7 +71,7 @@ const Main_header = ({ _updateMenuCart, menu }) => {
                 {/* ***** Menu Start ***** */}
                 <ul className="nav">
                   <li className="scroll-to-section">
-                    <Link href="/" {...menu == "beranda" && { className: "active" }}>
+                    <Link href="/" {...url == "/" && { style: { color: "red" } }}>
                       Home
                     </Link>
                   </li>
@@ -87,7 +89,11 @@ const Main_header = ({ _updateMenuCart, menu }) => {
                       </li>
                   */}
                   <li className="scroll-to-section">
-                    <Link href={"/semua-produk.html"}>Semua Produk</Link>
+                    <Link {...url == "/semua-produk.html" && {
+                      style: {
+                        color: "red"
+                      }
+                    }} href={"/semua-produk.html"}>Semua Produk</Link>
                   </li>
 
 
@@ -107,7 +113,7 @@ const Main_header = ({ _updateMenuCart, menu }) => {
                       <li className="scroll-to-section">
                         <>
                           { }
-                          <button style={{ border: "1px solid #DFDFDF", paddingTop: "-20px" }} onClick={() => {
+                          <button style={{ border: "1px solid #DFDFDF", color: url == "/shopping-cart.html" ? "red" : "null", paddingTop: "-20px" }} onClick={() => {
                             route.push("/shopping-cart.html");
                           }} className="btn">
                             <i style={{ marginTop: "6px" }} className="fa fa-shopping-cart" />
@@ -130,7 +136,7 @@ const Main_header = ({ _updateMenuCart, menu }) => {
                       <li style={{ paddingLeft: "0px" }} className="scroll-to-section">
                         <button onClick={() => {
                           route.push("/users/transaksi.html");
-                        }} className="btn" style={{ border: "1px solid #DFDFDF" }}>
+                        }} className="btn" style={{ border: "1px solid #DFDFDF", color: url.includes("/users") ? "red" : "null", }}>
                           <i className="fa fa-user" /> {new SessionManager().getUser()["nama"]}
                         </button>
 
@@ -153,7 +159,7 @@ const Main_header = ({ _updateMenuCart, menu }) => {
             </div>
           </div>
         </div>
-      </header>
+      </header >
 
 
     </>
