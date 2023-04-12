@@ -7,10 +7,12 @@ import { useEffect, useState } from "react";
 import qs from "query-string"
 import Loading_save from "@/Utils/Loading_save";
 import No_data from "@/Widget/No_data";
+import { useRouter } from "next/router";
 
 const Kategori = () => {
     const [aktif, setAktif] = useState("");
 
+    const router = useRouter();
     const [name, setName] = useState("");
     const [data, setData] = useState([]);
     const [id, setId] = useState("");
@@ -19,6 +21,7 @@ const Kategori = () => {
 
     const url = typeof window !== "undefined" && window.location.pathname;
     useEffect(() => {
+
         const data_url = window.location.pathname;
         setId(data_url);
         _getMenuKategori();
@@ -56,13 +59,14 @@ const Kategori = () => {
     }
     return (<>
         <Height height={150} />
-        {id}
+
         <div className="container" style={{ minHeight: "55vh" }}>
             <div className="row">
                 <div className="col-lg-4">
 
                     <div>
-                        <div style={{ fontWeight: "400", }}>Kategori</div>
+                        <div style={{ fontWeight: "600", }}>Kategori</div>
+                        <Height height={10} />
                         {loading ? <Loading_save text={"Memangmbil data..."} /> : <ul className="list-group" style={{ borderRadius: "0px" }}>
 
                             {kategori.map((list, index) => (

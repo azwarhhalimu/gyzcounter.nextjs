@@ -2,7 +2,7 @@ import Autentifkasi from "@/Utils/Autentifikasi";
 import axios from "axios";
 import qs from 'query-string';
 import { baseUrl } from "@/Utils/Config";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { encryptAES } from "@/Utils/enkripsi";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -10,6 +10,7 @@ import Loading_save from "@/Utils/Loading_save";
 
 const Login_admin = () => {
     const route = useRouter();
+    const router = useRouter();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
@@ -53,6 +54,16 @@ const Login_admin = () => {
 
         })
     }
+    useEffect(() => {
+        router.beforePopState(({ as }) => {
+            //   Detect browsers go back action
+            if (as !== router.asPath) {
+                window.history.pushState(null, null, router.asPath);
+                window.confirm("Apakah anda ingin kembali");
+            }
+        });
+
+    }, [])
     return (<>
         <div className="container">
             <div className="row justify-content-center">
