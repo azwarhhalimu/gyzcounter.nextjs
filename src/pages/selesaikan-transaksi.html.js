@@ -92,7 +92,7 @@ const Selesaikan_transaksi = () => {
                         <div style={{ border: "1px solid #DFDFDF", padding: "15px", borderRadius: "3px" }}>
                             <table cellPadding={"5px"} style={{ width: "100%" }}>
                                 {data.map((list, index) => (
-                                    <tr>
+                                    <tr key={index + 'erewr'}>
                                         <td>
                                             <img style={{ borderRadius: "4px", border: "1px solid #DFDFDF", padding: "5px", width: "60px" }} src={baseUrl("images/produk?w=40&s=" + list["foto"])} />
                                         </td>

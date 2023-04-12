@@ -17,7 +17,6 @@ import ListItem_list from "@/Componen/ListItem/ListItem_list";
 import ListItem_slide from "@/Componen/ListItem/ListItem_slide";
 import { useRouter } from "next/router";
 import Head from "next/head";
-import { useWindowDimensions } from "@/Utils/WindowDimentions";
 import qs from "query-string";
 import { encryptAES, dencryptAES } from "@/Utils/enkripsi";
 import { isMobile } from "react-device-detect";
@@ -28,7 +27,7 @@ import Nav_bottom from "@/Widget/Mobile_komponen/Nav_bottom";
 import SidebarCart from "@/Widget/SidebarCart";
 
 const Home = () => {
-  const { width, height } = useWindowDimensions();
+
 
   const route = useRouter();
   useEffect(() => {
