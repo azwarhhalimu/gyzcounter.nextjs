@@ -7,3 +7,7 @@
 #menu-aktif:hover{
   color:red
 }
+
+a.menu-aktif{
+  color:blue;
+}
