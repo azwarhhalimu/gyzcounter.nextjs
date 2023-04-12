@@ -5,6 +5,7 @@ import { Url_encoded } from "@/Utils/Url_encoded";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import qs from "query-string"
+import Loading_save from "@/Utils/Loading_save";
 
 const Kategori = () => {
     const [aktif, setAktif] = useState("");
@@ -12,6 +13,7 @@ const Kategori = () => {
     const [name, setName] = useState("");
     const [data, setData] = useState([]);
     const [id, setId] = useState("");
+    const [loading, setLoading] = useState(false);
 
     const url = typeof window !== "undefined" && window.location.pathname;
     useEffect(() => {
@@ -40,9 +42,11 @@ const Kategori = () => {
             })
     }
     const _getMenuKategori = () => {
+        setLoading(true);
         axios.post(baseUrl("public/kategori"))
             .then(respon => {
 
+                setLoading(false);
                 setkategori(respon.data.data)
             })
     }
@@ -55,7 +59,7 @@ const Kategori = () => {
 
                     <div>
                         <div style={{ fontWeight: "400", }}>Kategori</div>
-                        <ul className="list-group" style={{ borderRadius: "0px" }}>
+                        {loading ? <Loading_save text={"Memangmbil data..."} /> : <ul className="list-group" style={{ borderRadius: "0px" }}>
 
                             {kategori.map((list, index) => (
                                 <li key={index + 100} style={{ padding: "5px 10px 5px 10px" }} className="list-group-item d-flex justify-content-between align-items-center">
@@ -66,7 +70,7 @@ const Kategori = () => {
                                 </li>
                             ))}
 
-                        </ul>
+                        </ul>}
                     </div>
                 </div>
                 <div className="col-lg-8">
