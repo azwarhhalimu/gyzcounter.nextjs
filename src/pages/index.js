@@ -18,11 +18,14 @@ import ListItem_slide from "@/Componen/ListItem/ListItem_slide";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import { useWindowDimensions } from "@/Utils/WindowDimentions";
+import qs from "query-string";
+import { encryptAES, dencryptAES } from "@/Utils/enkripsi";
 import { isMobile } from "react-device-detect";
 import AppBar from "@/Widget/Mobile_komponen/AppBar";
 import Loading_mobile from "@/Utils/Loading_mobile";
 import Home_topBar from "@/Widget/Mobile_komponen/Home_topBar";
 import Nav_bottom from "@/Widget/Mobile_komponen/Nav_bottom";
+import SidebarCart from "@/Widget/SidebarCart";
 
 const Home = () => {
   const { width, height } = useWindowDimensions();
@@ -33,7 +36,12 @@ const Home = () => {
     _getBeranda();
     //  _getCart();
     _getSlideShow();
+    _getCart();
   }, []);
+  useEffect(() => {
+
+    _getCart();
+  }, [route])
   //  const [setMenu] = useOutletContext();
   const [homeBuilder, setHomeBuilder] = useState([]);
   const [homeBuilderSidebar, setHomeBuilderSidebar] = useState([]);
@@ -52,6 +60,7 @@ const Home = () => {
         setKategori(respon.data.kategori);
       });
   };
+
   const _getSlideShow = () => {
     axios.post(baseUrl("public/slide_show"))
       .then(respon => {
@@ -165,7 +174,7 @@ const Home = () => {
           </div>
           <div className="col-lg-3">
             <div>
-              <div className="c" style={{ fontWeight: "400", }}>Keranjang Belanja</div>
+              <div className="c" style={{ fontWeight: "bold", }}>Keranjang Belanja</div>
               <div className="d" style={{ border: "1px dashed #1783FF", padding: "10px" }}>
                 {new SessionManager().getUser() == null ? <div style={{ textAlign: "center" }}>
                   <i className="fa fa-info" />
@@ -173,7 +182,7 @@ const Home = () => {
                   <Height height={10} />
                   <Link href="/login.html">Login</Link>
                 </div> : <>
-                  {/* {<CartKomponen list={cart} total={total} />} */}
+                  {<SidebarCart cart={cart} totoal={total} />}
                 </>}
               </div>
             </div>
