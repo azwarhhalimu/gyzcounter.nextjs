@@ -41,9 +41,11 @@ const Selesaikan_transaksi = () => {
     }
     useEffect(() => {
         _getCart();
+
         if (data.length == 0) {
             alert("Keranjang belanja anda masih kosong. Silahkan tambahkan data belanja anda")
             route.push("/");
+
             return;
         }
     }, [])
