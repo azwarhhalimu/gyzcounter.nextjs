@@ -41,7 +41,7 @@ const Selesaikan_transaksi = () => {
             alert("Keranjang belanja anda masih kosong. Silahkan tambahkan data belanja anda")
             route.push("/");
 
-            return;
+
         }
     }, [])
     const _submit = (e) => {
