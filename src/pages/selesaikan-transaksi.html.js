@@ -13,11 +13,6 @@ const Selesaikan_transaksi = () => {
     const [alamat, setAlamat] = useState();
     const [no_handphone, setNo_handphone] = useState();
     const [pPengiriman, setPpengiriman] = useState(0);
-
-
-
-
-
     const [data, setData] = useState([]);
     const [total, setTotal] = useState();
 
