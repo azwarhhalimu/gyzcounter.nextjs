@@ -6,6 +6,7 @@ import { encryptAES } from "@/Utils/enkripsi";
 import qs from "query-string";
 import Loading_save from "@/Utils/Loading_save";
 import { useRouter } from "next/router";
+import No_data from "@/Widget/No_data";
 
 export default function Pelanggan() {
     const route = useRouter();
@@ -114,6 +115,7 @@ export default function Pelanggan() {
                         </tbody>
 
                     </table>
+                    {data.length == 0 && <No_data title={"Data kosong"} text={"Data pelanggan masih kosong"} />}
                 </div>
             </div>
         </div>

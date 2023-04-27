@@ -20,7 +20,6 @@ import Head from "next/head";
 import qs from "query-string";
 import { encryptAES, dencryptAES } from "@/Utils/enkripsi";
 import { isMobile } from "react-device-detect";
-import AppBar from "@/Widget/Mobile_komponen/AppBar";
 import Loading_mobile from "@/Utils/Loading_mobile";
 import Home_topBar from "@/Widget/Mobile_komponen/Home_topBar";
 import Nav_bottom from "@/Widget/Mobile_komponen/Nav_bottom";
