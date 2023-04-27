@@ -5,14 +5,18 @@ import Autenfikasi from "@/Utils/Autentifikasi";
 import { baseUrl, path_admin } from "@/Utils/Config";
 import Link from "next/link";
 import Head from "next/head";
+import Loading from "@/Utils/Loading";
+import Loading_save from "@/Utils/Loading_save";
 export default function Transaksi() {
 
+    const [loading, setLoading] = useState(false);
     const [data, setData] = useState([]);
     useEffect(() => {
 
         _getTransaksi();
     }, [])
     const _getTransaksi = () => {
+        setLoading(true);
         new Autenfikasi().createHeaderAdmin().then(berear => {
             axios.post(baseUrl("admin/get_transaksi"),
                 {},
@@ -21,7 +25,8 @@ export default function Transaksi() {
                         "Authorization": berear
                     }
                 }
-            ).then(respon => {
+            ).then(async respon => {
+                await setLoading(false);
                 setData(respon.data.data);
             })
         })
@@ -69,8 +74,10 @@ export default function Transaksi() {
                                 </tr>
                             ))}
 
+
                         </thead>
                     </table>
+                    {loading && <Loading_save text={"mengambil data..."} />}
                 </div>
             </div>
         </div>
