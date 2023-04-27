@@ -77,7 +77,12 @@ export default function Transaksi() {
 
                         </thead>
                     </table>
-                    {loading && <Loading_save text={"mengambil data..."} />}
+
+                    {loading &&
+                        <center>
+                            <Loading_save text={"mengambil data..."} />
+                        </center>
+                    }
                 </div>
             </div>
         </div>
